@@ -66,12 +66,12 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
           />
         </video>
 
-        {/* Overlay gradient — escurece para legibilidade do texto */}
+        {/* Overlay gradient — direcional: mais escuro onde o texto está */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(46,46,46,0.65) 0%, rgba(46,46,46,0.35) 50%, rgba(46,46,46,0.55) 100%)",
+              "linear-gradient(145deg, rgba(20,20,20,0.88) 0%, rgba(20,20,20,0.72) 45%, rgba(20,20,20,0.45) 100%)",
           }}
         />
       </div>
@@ -101,7 +101,8 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
           color="light"
           className={cn(
             "max-w-[700px]",
-            "animate-fade-in-up [animation-delay:150ms]"
+            "animate-fade-in-up [animation-delay:150ms]",
+            "[text-shadow:0_2px_24px_rgba(0,0,0,0.45)]"
           )}
         >
           {headline}
