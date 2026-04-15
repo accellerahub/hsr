@@ -1,0 +1,262 @@
+/* =============================================================================
+   GLOBALS.CSS — Hospital São Rafael
+   =============================================================================
+   Tailwind directives + CSS Custom Properties (Design Tokens)
+   Fonte de verdade: docs/03-DESIGN-TOKENS.md
+   ============================================================================= */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   LAYER BASE — CSS Variables e estilos globais
+   ============================================================================= */
+@layer base {
+  :root {
+    /* ----- Cores de Marca ----- */
+    --color-creme: #FDF1E7;
+    --color-branco: #FFFFFF;
+    --color-charcoal: #2E2E2E;
+    --color-ouro: #9b6c4a;
+    --color-ouro-hover: #7a5339;
+    --color-azul: #00A5D6;
+    --color-cobre: #C08A63;
+
+    /* ----- Cores Semânticas ----- */
+    --color-success: #2D8F4E;
+    --color-warning: #FFB800;
+    --color-error: #D94040;
+    --color-info: #00A5D6;
+
+    /* ----- Superfícies ----- */
+    --surface-primary: #FDF1E7;
+    --surface-secondary: #FFFFFF;
+    --surface-tertiary: #2E2E2E;
+    --surface-overlay: rgba(46, 46, 46, 0.70);
+    --surface-glass: rgba(255, 255, 255, 0.15);
+    --surface-glass-border: rgba(255, 255, 255, 0.2);
+
+    /* ----- Transições ----- */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+    --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ----- Efeitos ----- */
+    --glass-blur: 15px;
+    --hover-lift: -5px;
+    --gradient-hero: linear-gradient(
+      180deg,
+      rgba(46, 46, 46, 0.6) 0%,
+      rgba(46, 46, 46, 0.3) 100%
+    );
+
+    /* ----- Header ----- */
+    --header-height: 80px;
+
+    /* ----- shadcn/ui compatibility variables ----- */
+    --background: 33 78% 95%;
+    --foreground: 0 0% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+    --primary: 25 35% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 33 78% 95%;
+    --secondary-foreground: 0 0% 18%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 29 38% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 25 35% 45%;
+    --radius: 4px;
+  }
+
+  /* ----- Reset e base ----- */
+  * {
+    border-color: theme("colors.neutral.200");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+  }
+
+  body {
+    background-color: var(--color-creme);
+    color: var(--color-charcoal);
+    font-family: theme("fontFamily.sans");
+    font-size: theme("fontSize.lg");
+    line-height: theme("lineHeight.relaxed");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ----- Tipografia global ----- */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-charcoal);
+    line-height: theme("lineHeight.tight");
+    font-weight: theme("fontWeight.bold");
+  }
+
+  h1 {
+    font-size: theme("fontSize.3xl");
+    font-weight: theme("fontWeight.extrabold");
+    letter-spacing: theme("letterSpacing.tight");
+  }
+
+  h2 {
+    font-size: theme("fontSize.2xl");
+    font-weight: theme("fontWeight.bold");
+  }
+
+  /* Desktop overrides */
+  @media (min-width: theme("screens.lg")) {
+    h1 {
+      font-size: theme("fontSize.6xl");
+    }
+    h2 {
+      font-size: theme("fontSize.4xl");
+    }
+  }
+
+  /* ----- Links ----- */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-base);
+  }
+
+  /* ----- Focus visible (acessibilidade) ----- */
+  :focus-visible {
+    outline: 2px solid var(--color-ouro);
+    outline-offset: 2px;
+  }
+
+  /* ----- Seleção de texto ----- */
+  ::selection {
+    background-color: var(--color-ouro);
+    color: var(--color-charcoal);
+  }
+}
+
+/* =============================================================================
+   LAYER COMPONENTS — Classes reutilizáveis compostas
+   ============================================================================= */
+@layer components {
+  /* ----- Kicker (overline label) ----- */
+  .kicker {
+    font-size: theme("fontSize.sm");
+    font-weight: theme("fontWeight.extrabold");
+    text-transform: uppercase;
+    letter-spacing: theme("letterSpacing.kicker");
+    line-height: theme("lineHeight.normal");
+  }
+
+  /* ----- Container padrão HSR ----- */
+  .container-hsr {
+    width: 100%;
+    max-width: theme("screens.xl");
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: theme("spacing.4");
+    padding-right: theme("spacing.4");
+  }
+
+  @media (min-width: theme("screens.md")) {
+    .container-hsr {
+      padding-left: theme("spacing.8");
+      padding-right: theme("spacing.8");
+    }
+  }
+
+  @media (min-width: theme("screens.xl")) {
+    .container-hsr {
+      padding-left: theme("spacing.16");
+      padding-right: theme("spacing.16");
+    }
+  }
+
+  /* ----- Respiro entre seções (dobras) ----- */
+  .section-spacing {
+    padding-top: theme("spacing.20");    /* 80px mobile */
+    padding-bottom: theme("spacing.20");
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .section-spacing {
+      padding-top: theme("spacing.30");  /* 120px desktop */
+      padding-bottom: theme("spacing.30");
+    }
+  }
+
+  /* ----- Glassmorphism ----- */
+  .glass {
+    background: var(--surface-glass);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--surface-glass-border);
+  }
+
+  /* ----- Overlay de modal ----- */
+  .overlay {
+    background: var(--surface-overlay);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+
+  /* ----- Hero gradient overlay ----- */
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  /* ----- Card hover lift ----- */
+  .hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(var(--hover-lift));
+    box-shadow: theme("boxShadow.lg");
+  }
+}
+
+/* =============================================================================
+   LAYER UTILITIES — Utilitários customizados
+   ============================================================================= */
+@layer utilities {
+  /* ----- Esconder scrollbar (esteiras infinitas) ----- */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ----- Texto em fundo escuro ----- */
+  .text-on-dark {
+    color: var(--color-branco);
+  }
+
+  .text-on-dark h1,
+  .text-on-dark h2,
+  .text-on-dark h3,
+  .text-on-dark h4 {
+    color: var(--color-branco);
+  }
+
+  /* ----- Animação delay helpers (para stagger) ----- */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
