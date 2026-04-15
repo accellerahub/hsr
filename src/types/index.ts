@@ -24,7 +24,7 @@ export interface NavCTA {
 export interface HeroData {
   kicker: string
   headline: string
-  subheadline: string | string[]
+  subheadline: string | readonly string[]
   ctaPrimary: NavCTA
   video: {
     src: string
@@ -57,7 +57,7 @@ export interface StatsData {
 export interface ContentBlockData {
   kicker: string
   headline: string
-  description: string | string[]
+  description: string | readonly string[]
   ctas: NavCTA[]
   image?: {
     src: string
