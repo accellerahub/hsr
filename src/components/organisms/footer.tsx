@@ -24,7 +24,7 @@ interface FooterProps extends BaseComponentProps {
 // COMPONENTE
 // -----------------------------------------------------------------------------
 export function Footer({ data, className }: FooterProps) {
-  const { description, stats, navigation, contact, social, emergency } = data
+  const { description, stats, navigation, contact, social } = data
 
   const currentYear = new Date().getFullYear()
 
