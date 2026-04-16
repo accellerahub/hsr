@@ -16,7 +16,7 @@ export function UnderConstruction({ className }: UnderConstructionProps) {
     <span
       aria-label="Em construção"
       className={cn(
-        "inline-flex items-center gap-1.5",
+        "inline-flex self-start items-center gap-1.5",
         "px-3 py-1 rounded-full",
         "border border-charcoal/[0.12] bg-charcoal/[0.04]",
         "text-[9px] font-extrabold uppercase tracking-[0.14em] text-charcoal/30",

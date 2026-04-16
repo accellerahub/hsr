@@ -50,3 +50,5 @@ storybook-static/
 
 # --- Claude Code (cache local) ---
 .claude/
+
+.vercel
