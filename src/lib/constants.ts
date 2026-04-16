@@ -201,7 +201,7 @@ export const ESPECIALIDADES_DATA = {
       id: "ortopedia",
       title: "Ortopedia",
       description:
-        "Cirurgias minimamente invasivas do sistema musculoesquelético: artroscopia, próteses de joelho e quadril, reconstrução de ligamentos e tratamento de patologias da coluna vertebral com protocolos de recuperação acelerada.",
+        "Artroscopia, artroplastias de joelho e quadril e cirurgias de coluna com técnicas minimamente invasivas e protocolos de recuperação acelerada.",
       icon: "bone",
       procedures: [
         "Artroplastia total de joelho",
@@ -216,7 +216,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cardiologia",
       title: "Cardiologia",
       description:
-        "Procedimentos de alta complexidade para diagnóstico e tratamento cardiovascular: cateterismo, angioplastia coronária, implante de stents e marcapassos, com monitorização contínua e UTI cardiológica dedicada.",
+        "Cateterismo, angioplastia coronária e cirurgias cardíacas de alta complexidade com monitorização contínua em UTI cardiológica dedicada.",
       icon: "heart-pulse",
       procedures: [
         "Cateterismo cardíaco",
@@ -231,7 +231,7 @@ export const ESPECIALIDADES_DATA = {
       id: "neurocirurgia",
       title: "Neurocirurgia",
       description:
-        "Intervenções neurocirúrgicas de precisão para o sistema nervoso central e periférico: ressecção de tumores cerebrais, cirurgia minimamente invasiva da coluna e tratamento de neuropatias com navegação cirúrgica assistida.",
+        "Ressecção de tumores cerebrais, microcirurgia da coluna e tratamento de neuropatias com navegação cirúrgica assistida de precisão.",
       icon: "brain",
       procedures: [
         "Ressecção de tumores cerebrais",
@@ -246,7 +246,7 @@ export const ESPECIALIDADES_DATA = {
       id: "urologia",
       title: "Urologia",
       description:
-        "Cirurgias urológicas de alta complexidade com acesso laparoscópico e robótico: prostatectomia radical, nefrectomia, tratamento de cálculos renais e procedimentos endoscópicos com internação reduzida.",
+        "Prostatectomia, nefrectomia e tratamento de cálculos renais com acesso laparoscópico e robótico, garantindo alta precisão e internação reduzida.",
       icon: "stethoscope",
       procedures: [
         "Prostatectomia radical",
@@ -261,7 +261,7 @@ export const ESPECIALIDADES_DATA = {
       id: "ginecologia",
       title: "Ginecologia",
       description:
-        "Cirurgias ginecológicas com foco em precisão e mínima invasividade: histerectomia laparoscópica, miomectomia, tratamento cirúrgico da endometriose e uroginecologia com protocolos de recuperação rápida.",
+        "Histerectomia laparoscópica, miomectomia e tratamento da endometriose com precisão minimamente invasiva e protocolos de recuperação rápida.",
       icon: "baby",
       procedures: [
         "Histerectomia laparoscópica",
@@ -276,7 +276,7 @@ export const ESPECIALIDADES_DATA = {
       id: "oftalmologia",
       title: "Oftalmologia",
       description:
-        "Cirurgias oculares de alta precisão com tecnologia de última geração: facoemulsificação de catarata, tratamento cirúrgico de glaucoma, vitrectomia e cirurgia refrativa com laser em centro especializado.",
+        "Facoemulsificação de catarata, tratamento cirúrgico de glaucoma e vitrectomia com tecnologia de última geração em centro oftalmológico especializado.",
       icon: "eye",
       procedures: [
         "Facoemulsificação (catarata)",
@@ -291,7 +291,7 @@ export const ESPECIALIDADES_DATA = {
       id: "dermatologia",
       title: "Dermatologia",
       description:
-        "Procedimentos cirúrgicos dermatológicos de alta precisão: exérese de lesões cutâneas, cirurgia de Mohs para carcinomas, reconstruções e tratamento cirúrgico de condições complexas da pele.",
+        "Exérese de lesões, cirurgia de Mohs para carcinomas e reconstruções cutâneas com precisão cirúrgica e diagnóstico histopatológico integrado.",
       icon: "scan",
       procedures: [
         "Exérese de lesões cutâneas",
@@ -306,7 +306,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-geral",
       title: "Cirurgia Geral",
       description:
-        "Cirurgias abdominais e do aparelho digestivo com vasta experiência em laparoscopia: colecistectomia, herniorrafia, ressecções intestinais e procedimentos do trato digestivo com recuperação acelerada.",
+        "Colecistectomia, herniorrafia e ressecções intestinais por laparoscopia com ampla experiência clínica e protocolos de recuperação acelerada.",
       icon: "scissors",
       procedures: [
         "Colecistectomia laparoscópica",
@@ -321,7 +321,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-plastica",
       title: "Cirurgia Plástica",
       description:
-        "Cirurgias reconstrutivas e estéticas com resultados naturais e seguros: mamoplastias, rinoplastia, ritidoplastia, lipoaspiração e reconstrução pós-oncológica com protocolos de reabilitação integrada.",
+        "Mamoplastias, rinoplastia e reconstrução pós-oncológica com resultados naturais, seguros e protocolos de reabilitação integrada.",
       icon: "sparkles",
       procedures: [
         "Mamoplastia de aumento e redução",
@@ -336,7 +336,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-vascular",
       title: "Cirurgia Vascular",
       description:
-        "Tratamento cirúrgico e endovascular de doenças arteriais e venosas: revascularização de membros, correção de aneurismas, tratamento de varizes e fístulas com tecnologia de imagem intraoperatória.",
+        "Revascularização arterial, correção de aneurismas e tratamento de varizes com abordagem endovascular e tecnologia de imagem intraoperatória.",
       icon: "waves",
       procedures: [
         "Revascularização arterial",
@@ -351,7 +351,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cabeca-pescoco",
       title: "Cabeça e Pescoço",
       description:
-        "Cirurgias oncológicas e reconstrutivas da região craniofacial e cervical: tireoidectomia, paratireoidectomia, esvaziamento cervical e ressecção de tumores com reconstrução por retalhos.",
+        "Tireoidectomia, esvaziamento cervical e ressecção oncológica craniofacial com reconstrução por retalhos microvascularizados.",
       icon: "user",
       procedures: [
         "Tireoidectomia total e parcial",
@@ -366,7 +366,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-toracica",
       title: "Cirurgia Torácica",
       description:
-        "Procedimentos pulmonares e mediastinais com videoassistência (VATS): lobectomia, segmentectomia, ressecção de tumores, tratamento de pneumotórax e biópsia pleural minimamente invasiva.",
+        "Lobectomia, segmentectomia e ressecção de tumores por videoassistência (VATS), com abordagem minimamente invasiva do tórax e mediastino.",
       icon: "wind",
       procedures: [
         "Lobectomia pulmonar (VATS)",

@@ -131,7 +131,7 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
       <Heading as="h3" color="default" className="mb-2">
         {title}
       </Heading>
-      <BodyText color="muted" size="sm" className="mb-4 line-clamp-3">
+      <BodyText color="muted" size="sm" className="mb-4">
         {description}
       </BodyText>
       {!hideCta && (underConstruction ? (
