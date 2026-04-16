@@ -64,7 +64,7 @@ function ServiceCardImage({ title, description, image, imageAlt, onLearnMore, ct
     >
       {/* Imagem com overlay */}
       {image && (
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden rounded-t-xl">
           <Image
             src={image}
             alt={imageAlt ?? title}
