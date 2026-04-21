@@ -175,6 +175,7 @@ export interface B2BData {
   subheadline?: string
   description: string
   features: B2BFeature[]
+  ambientes?: readonly ProductItem[] | ProductItem[]
   testimonials: TestimonialItem[]
   cta: NavCTA
 }

@@ -12,6 +12,7 @@ import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
 import { Button } from "@/components/atoms/button"
 import { FeatureCard } from "@/components/molecules/feature-card"
+import { ProductCard } from "@/components/molecules/product-card"
 import { TestimonialCard } from "@/components/molecules/testimonial-card"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, B2BData } from "@/types"
@@ -35,12 +36,16 @@ export function B2BSection({ data, className }: B2BSectionProps) {
     threshold: 0.08,
     once: true,
   })
+  const { ref: ambientesRef, hasIntersected: ambientesVisible } = useIntersection({
+    threshold: 0.1,
+    once: true,
+  })
   const { ref: testimonialsRef, hasIntersected: testimonialsVisible } = useIntersection({
     threshold: 0.1,
     once: true,
   })
 
-  const { kicker, headline, subheadline, features, testimonials, cta } = data
+  const { kicker, headline, subheadline, features, ambientes, testimonials, cta } = data
 
   return (
     <section
@@ -111,6 +116,45 @@ export function B2BSection({ data, className }: B2BSectionProps) {
             </div>
           ))}
         </div>
+
+        {/* ---------------------------------------------------------------- */}
+        {/* AMBIENTES EXCLUSIVOS — Academia + Conforto Médico (fotos grandes) */}
+        {/* ---------------------------------------------------------------- */}
+        {ambientes && ambientes.length > 0 && (
+          <div ref={ambientesRef as React.RefObject<HTMLDivElement>} className="mb-16">
+            <p
+              className={cn(
+                "text-xs font-extrabold uppercase tracking-kicker text-white/40 mb-8",
+                "transition-all duration-500",
+                ambientesVisible ? "opacity-100" : "opacity-0"
+              )}
+            >
+              Ambientes Exclusivos
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {ambientes.map((ambiente, index) => (
+                <div
+                  key={ambiente.id}
+                  className={cn(
+                    "transition-all duration-700",
+                    ambientesVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  )}
+                  style={{ transitionDelay: ambientesVisible ? `${index * 120}ms` : "0ms" }}
+                >
+                  <ProductCard
+                    product={ambiente}
+                    audience="medico"
+                    hideCta
+                    className="h-full"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ---------------------------------------------------------------- */}
         {/* DIVISOR                                                           */}

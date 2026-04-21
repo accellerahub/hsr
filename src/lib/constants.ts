@@ -125,7 +125,7 @@ export const SERVICOS_DATA = {
   kicker: "ESTRUTURA HOSPITALAR",
   headline: "Infraestrutura completa em um único complexo integrado.",
   description:
-    "Tudo o que o seu procedimento exige, integrado no mesmo complexo — sem dispersão, sem deslocamento, sem atrito.",
+    "Tudo o que o seu procedimento exige, integrado no mesmo complexo, sem dispersão, sem deslocamento, sem atrito.",
   items: [
     {
       id: "centro-cirurgico",
@@ -179,7 +179,7 @@ export const SERVICOS_DATA = {
       id: "praca-alimentacao",
       title: "Praça de Alimentação",
       description:
-        "Alimentação de qualidade para pacientes e público externo, acompanhantes, equipe médica e público externo dentro do complexo.",
+        "Alimentação de qualidade para pacientes, acompanhantes, equipe médica e público externo dentro do complexo.",
       icon: "utensils",
       image: "/assets/images/servicos/praca-alimentacao.jpg",
     },
@@ -491,7 +491,7 @@ export const JORNADA_DATA = {
   headline:
     "Do diagnóstico de precisão à recuperação total, sem sair do nosso complexo integrado.",
   description:
-    "A descontinuidade do cuidado médico gera atrito. Aqui, o IMD e o centro cirúrgico operam como uma única estrutura completa — previsível para o seu médico, seguro e confortável para você.",
+    "A descontinuidade do cuidado médico gera atrito. Aqui, o IMD e o centro cirúrgico operam como uma única estrutura completa, previsível para o seu médico, seguro e confortável para você.",
   steps: [
     {
       id: "consulta",
@@ -583,7 +583,7 @@ export const B2B_DATA = {
       metric: "",
       title: "Suporte Técnico Especializado",
       description:
-        "Equipe de instrumentadores altamente treinados e suporte operacional dedicado via WhatsApp — do agendamento à alta.",
+        "Equipe de instrumentadores altamente treinados e suporte operacional dedicado do agendamento à alta.",
       icon: "headset",
     },
     {
@@ -601,6 +601,24 @@ export const B2B_DATA = {
       description:
         "Do IMD direto para o prontuário do bloco cirúrgico, sem perda de informações e com rastreabilidade total.",
       icon: "git-merge",
+    },
+  ],
+  ambientes: [
+    {
+      id: "academia",
+      title: "Academia",
+      description:
+        "Espaço de atividade física e bem-estar exclusivo para médicos e equipe cirúrgica, com equipamentos modernos e estrutura completa dentro do complexo.",
+      icon: "dumbbell",
+      image: "/assets/images/produtos/academia.jpg",
+    },
+    {
+      id: "conforto-medico",
+      title: "Conforto Médico",
+      description:
+        "Área exclusiva de descanso e conveniência para médicos, pensada para preparação e recuperação entre procedimentos com privacidade e comodidade.",
+      icon: "sofa",
+      image: "/assets/images/produtos/conforto-medico.jpg",
     },
   ],
   testimonials: [
@@ -637,13 +655,13 @@ export const FAQ_DATA = {
       id: "faq-1",
       question: "Como funciona o fluxo de atendimento particular?",
       answer:
-        "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento via WhatsApp ou central de atendimento. Na sequência, você realiza consulta e exames no IMD — Instituto Médico e Diagnóstico —, onde todas as informações já são inseridas digitalmente no prontuário integrado. Com o preparo concluído, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo esse trajeto acontece sem sair do nosso complexo.",
+        "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento pela nossa central de atendimento, que organiza toda a sua jornada de forma personalizada: consultas, exames, check-ups e preparação cirúrgica. No IMD (Instituto Médico e Diagnóstico), consultas e exames são realizados no mesmo complexo, com as informações inseridas digitalmente no prontuário integrado. Concluído o preparo, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo o trajeto acontece sem sair do nosso complexo.",
     },
     {
       id: "faq-2",
       question: "Meu cirurgião pode operar no São Rafael?",
       answer:
-        "Sim. O Hospital São Rafael opera no modelo de hospital aberto, permitindo que médicos credenciados realizem procedimentos em nossas instalações. O processo de credenciamento é feito por meio da nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades disponíveis. Uma vez credenciado, o médico conta com 22 salas cirúrgicas equipadas com tecnologia de última geração, instrumentadores especializados, suporte técnico dedicado via WhatsApp e giro de sala de 40 minutos. Para iniciar o processo, entre em contato pelo botão \"Falar com Consultoria Médica Institucional\".",
+        "Sim. O Hospital São Rafael é um hospital de corpo clínico aberto, o que significa que médicos externos devidamente credenciados podem realizar procedimentos em nossa estrutura, atendendo seus próprios pacientes particulares. O credenciamento é conduzido pela nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades disponíveis. Uma vez credenciado, o cirurgião passa a contar com 22 salas cirúrgicas equipadas com tecnologia de última geração, equipe de instrumentadores especializados, suporte operacional dedicado, giro de sala de 40 minutos e integração total com o IMD. Para iniciar o processo, utilize o botão \"Falar com Consultoria Médica Institucional\".",
     },
     {
       id: "faq-3",

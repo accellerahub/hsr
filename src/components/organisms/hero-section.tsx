@@ -71,7 +71,7 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(145deg, rgba(20,20,20,0.88) 0%, rgba(20,20,20,0.72) 45%, rgba(20,20,20,0.45) 100%)",
+              "linear-gradient(145deg, rgba(20,20,20,0.72) 0%, rgba(20,20,20,0.55) 45%, rgba(20,20,20,0.25) 100%)",
           }}
         />
       </div>
@@ -140,20 +140,30 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
       </div>
 
       {/* ---------------------------------------------------------------- */}
-      {/* INDICADOR DE SCROLL                                               */}
+      {/* INDICADOR DE SCROLL — seta animada                                */}
       {/* ---------------------------------------------------------------- */}
       <div
         aria-hidden="true"
         className={cn(
           "absolute bottom-8 left-1/2 -translate-x-1/2 z-10",
-          "flex flex-col items-center gap-2",
-          "animate-bounce opacity-60"
+          "flex flex-col items-center gap-1",
+          "animate-bounce opacity-70"
         )}
       >
-        <span className="text-white text-xs font-semibold tracking-widest uppercase">
-          Scroll
-        </span>
         <div className="w-px h-8 bg-white/60" />
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-white"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </div>
     </section>
   )
