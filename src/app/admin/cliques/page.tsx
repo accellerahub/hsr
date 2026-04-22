@@ -135,7 +135,26 @@ export default async function AdminCliquesPage() {
           Histórico
         </h2>
         <ClicksChart
-          data={buckets.map((b) => ({ label: b.label, value: b.total }))}
+          months={buckets.map((b) => b.label)}
+          series={(() => {
+            const allKeys = new Set<string>()
+            for (const b of buckets) for (const k of b.byKey.keys()) allKeys.add(k)
+            const totalsByKey = new Map<string, number>()
+            for (const k of allKeys) {
+              let sum = 0
+              for (const b of buckets) sum += b.byKey.get(k) ?? 0
+              totalsByKey.set(k, sum)
+            }
+            const orderedKeys = Array.from(allKeys).sort(
+              (a, b) => (totalsByKey.get(b) ?? 0) - (totalsByKey.get(a) ?? 0)
+            )
+            return orderedKeys.map((k) => ({
+              key: k,
+              label: labelByKey.get(k) ?? k,
+              values: buckets.map((b) => b.byKey.get(k) ?? 0),
+            }))
+          })()}
+          totals={buckets.map((b) => b.total)}
         />
       </div>
 
