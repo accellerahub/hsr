@@ -93,7 +93,7 @@ export function FaqList({ initial }: { initial: Faq[] }) {
 
       {items.length === 0 && (
         <div className="text-sm text-charcoal/50 p-6 text-center bg-white rounded-2xl border border-neutral-100">
-          Nenhuma pergunta. Clique em "Nova pergunta" acima.
+          Nenhuma pergunta. Clique em &quot;Nova pergunta&quot; acima.
         </div>
       )}
 

@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/server"
-import { redirect } from "next/navigation"
 import { AdminShell } from "./_components/admin-shell"
 
 export const metadata = {
