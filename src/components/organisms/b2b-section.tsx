@@ -7,6 +7,8 @@
 
 "use client"
 
+import { useCallback, useEffect, useRef, useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -42,6 +44,46 @@ export function B2BSection({ data, className }: B2BSectionProps) {
   })
 
   const { kicker, headline, subheadline, features, testimonials, cta } = data
+
+  // --- Carrossel de depoimentos --------------------------------------------
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const goTo = useCallback((index: number) => {
+    setIsVisible(false)
+    setTimeout(() => {
+      setActiveIndex(index)
+      setIsVisible(true)
+    }, 250)
+  }, [])
+
+  const goPrev = useCallback(() => {
+    if (testimonials.length === 0) return
+    goTo((activeIndex - 1 + testimonials.length) % testimonials.length)
+  }, [activeIndex, testimonials.length, goTo])
+
+  const goNext = useCallback(() => {
+    if (testimonials.length === 0) return
+    goTo((activeIndex + 1) % testimonials.length)
+  }, [activeIndex, testimonials.length, goTo])
+
+  useEffect(() => {
+    if (isPaused || testimonials.length <= 1) return
+    intervalRef.current = setInterval(() => {
+      goTo((activeIndex + 1) % testimonials.length)
+    }, 6000)
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [activeIndex, testimonials.length, isPaused, goTo])
+
+  const primary = testimonials[activeIndex]
+  const secondary =
+    testimonials.length > 1
+      ? testimonials[(activeIndex + 1) % testimonials.length]
+      : null
 
   return (
     <section
@@ -124,40 +166,85 @@ export function B2BSection({ data, className }: B2BSectionProps) {
         <div className="border-t border-white/10 mb-16" aria-hidden="true" />
 
         {/* ---------------------------------------------------------------- */}
-        {/* DEPOIMENTOS                                                       */}
+        {/* DEPOIMENTOS — Carrossel (2 visíveis desktop / 1 mobile)          */}
         {/* ---------------------------------------------------------------- */}
-        {testimonials.length > 0 && (
-          <div ref={testimonialsRef as React.RefObject<HTMLDivElement>}>
-            <p
+        {testimonials.length > 0 && primary && (
+          <div
+            ref={testimonialsRef as React.RefObject<HTMLDivElement>}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div
               className={cn(
-                "text-xs font-extrabold uppercase tracking-kicker text-white/40 mb-8",
+                "flex items-center justify-between gap-4 mb-8 flex-wrap",
                 "transition-all duration-500",
                 testimonialsVisible ? "opacity-100" : "opacity-0"
               )}
             >
-              O que dizem nossos médicos parceiros
-            </p>
+              <p className="text-xs font-extrabold uppercase tracking-kicker text-white/40">
+                O que dizem nossos médicos parceiros
+              </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className={cn(
-                    "transition-all duration-700",
-                    testimonialsVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  )}
-                  style={{ transitionDelay: testimonialsVisible ? `${index * 150}ms` : "0ms" }}
-                >
+              {testimonials.length > 1 && (
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={goPrev}
+                    aria-label="Depoimento anterior"
+                    className={cn(
+                      "w-10 h-10 rounded-full border border-white/20",
+                      "flex items-center justify-center",
+                      "text-white/60 hover:text-white hover:border-white/60",
+                      "transition-colors",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+                    )}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <span className="text-xs text-white/40 tabular-nums min-w-[3ch] text-center">
+                    {activeIndex + 1} / {testimonials.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={goNext}
+                    aria-label="Próximo depoimento"
+                    className={cn(
+                      "w-10 h-10 rounded-full border border-white/20",
+                      "flex items-center justify-center",
+                      "text-white/60 hover:text-white hover:border-white/60",
+                      "transition-colors",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+                    )}
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div
+              className={cn(
+                "grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch",
+                "transition-opacity duration-300",
+                isVisible && testimonialsVisible ? "opacity-100" : "opacity-0"
+              )}
+            >
+              <TestimonialCard
+                testimonial={primary}
+                variant="medico"
+                theme="dark"
+                className="h-full"
+              />
+              {secondary && (
+                <div className="hidden md:block">
                   <TestimonialCard
-                    testimonial={testimonial}
+                    testimonial={secondary}
                     variant="medico"
                     theme="dark"
                     className="h-full"
                   />
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}
