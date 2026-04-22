@@ -11,6 +11,7 @@ import {
   ExternalLink,
   Users,
   ShieldCheck,
+  Building2,
 } from "lucide-react"
 import { Logo } from "@/components/atoms/logo"
 import { logoutAction } from "../login/actions"
@@ -34,6 +35,7 @@ const NAV = [
     items: [
       { label: "CTAs", href: "/admin/ctas", icon: Link2 },
       { label: "FAQ", href: "/admin/faq", icon: HelpCircle },
+      { label: "Estrutura", href: "/admin/estrutura", icon: Building2 },
       { label: "Cliques", href: "/admin/cliques", icon: BarChart3 },
     ],
   },

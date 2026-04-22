@@ -1,35 +1,32 @@
 // =============================================================================
 // /servicos/[slug]/page.tsx — Página dinâmica de serviço | Hospital São Rafael
 // =============================================================================
-// Rota dinâmica App Router. Lê o slug, busca em SERVICES_CONTENT,
-// renderiza ServiceDetailTemplate ou notFound() se não existir.
+// Lookup em hospital_structure (Supabase) primeiro; fallback para
+// SERVICES_CONTENT estático. notFound() se nenhum cobre o slug.
 // =============================================================================
 
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
-import { SERVICES_CONTENT } from "@/lib/services-content"
 import { ServiceDetailTemplate } from "@/components/templates/service-detail-template"
+import {
+  getAllServiceSlugs,
+  getServiceDataBySlug,
+} from "@/lib/structure-service-data"
 
-// -----------------------------------------------------------------------------
-// TIPOS
-// -----------------------------------------------------------------------------
 interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-// -----------------------------------------------------------------------------
-// STATIC PARAMS — geração estática de todas as rotas conhecidas
-// -----------------------------------------------------------------------------
-export function generateStaticParams() {
-  return Object.keys(SERVICES_CONTENT).map((slug) => ({ slug }))
+export async function generateStaticParams() {
+  const slugs = await getAllServiceSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
-// -----------------------------------------------------------------------------
-// METADATA DINÂMICA
-// -----------------------------------------------------------------------------
+export const dynamicParams = true
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const service = SERVICES_CONTENT[slug]
+  const service = await getServiceDataBySlug(slug)
 
   if (!service) {
     return {
@@ -55,12 +52,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// -----------------------------------------------------------------------------
-// COMPONENTE DE PÁGINA
-// -----------------------------------------------------------------------------
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params
-  const service = SERVICES_CONTENT[slug]
+  const service = await getServiceDataBySlug(slug)
 
   if (!service) {
     notFound()

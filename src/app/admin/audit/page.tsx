@@ -92,7 +92,7 @@ export default async function AdminAuditPage({
         <span className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/50">
           Filtros
         </span>
-        {["create", "update", "update_role", "delete", "invite"].map((a) => (
+        {["create", "update", "update_role", "delete", "invite", "reorder"].map((a) => (
           <Link
             key={a}
             href={`/admin/audit${qs({ action: sp.action === a ? undefined : a, page: 1 })}`}
@@ -105,7 +105,7 @@ export default async function AdminAuditPage({
             {a}
           </Link>
         ))}
-        {["user", "cta", "faq"].map((e) => (
+        {["user", "cta", "faq", "hospital_structure"].map((e) => (
           <Link
             key={e}
             href={`/admin/audit${qs({ entity: sp.entity === e ? undefined : e, page: 1 })}`}
