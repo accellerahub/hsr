@@ -128,7 +128,7 @@ export default async function AdminAuditPage({
         )}
       </div>
 
-      <div className="bg-white rounded-2xl border border-neutral-100 overflow-hidden">
+      <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
         {rows.length === 0 ? (
           <div className="p-8 text-center text-sm text-charcoal/60">
             Nenhum registro.

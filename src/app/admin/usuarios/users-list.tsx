@@ -58,7 +58,7 @@ export function UsersList({
 
   if (rows.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-neutral-100 p-8 text-center text-sm text-charcoal/60">
+      <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-8 text-center text-sm text-charcoal/60">
         Nenhum usuário cadastrado.
       </div>
     )
@@ -72,7 +72,7 @@ export function UsersList({
         </div>
       )}
 
-      <div className="bg-white rounded-2xl border border-neutral-100 overflow-hidden">
+      <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-neutral-50 text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/60">
             <tr>

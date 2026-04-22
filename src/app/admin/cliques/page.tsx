@@ -94,7 +94,7 @@ export default async function AdminCliquesPage() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+        <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
           <div className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/50">
             Mês atual
           </div>
@@ -112,7 +112,7 @@ export default async function AdminCliquesPage() {
             </div>
           )}
         </div>
-        <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+        <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
           <div className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/50">
             Mês anterior
           </div>
@@ -120,7 +120,7 @@ export default async function AdminCliquesPage() {
             {previous?.total ?? 0}
           </div>
         </div>
-        <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+        <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
           <div className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/50">
             Total 6 meses
           </div>
@@ -130,7 +130,7 @@ export default async function AdminCliquesPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+      <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
         <h2 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal mb-4">
           Histórico
         </h2>
@@ -158,7 +158,7 @@ export default async function AdminCliquesPage() {
         />
       </div>
 
-      <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+      <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
         <h2 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal mb-4">
           Top CTAs no mês atual
         </h2>

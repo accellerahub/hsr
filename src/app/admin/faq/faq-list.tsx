@@ -92,7 +92,7 @@ export function FaqList({ initial }: { initial: Faq[] }) {
       )}
 
       {items.length === 0 && (
-        <div className="text-sm text-charcoal/50 p-6 text-center bg-white rounded-2xl border border-neutral-100">
+        <div className="text-sm text-charcoal/50 p-6 text-center bg-white rounded-2xl border border-neutral-200 shadow-sm">
           Nenhuma pergunta. Clique em &quot;Nova pergunta&quot; acima.
         </div>
       )}
@@ -104,7 +104,7 @@ export function FaqList({ initial }: { initial: Faq[] }) {
           onDragStart={() => onDragStart(faq.id)}
           onDragOver={(e) => onDragOver(e, faq.id)}
           onDragEnd={onDragEnd}
-          className={`bg-white rounded-2xl border border-neutral-100 overflow-hidden transition-shadow ${
+          className={`bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden transition-shadow ${
             dragId === faq.id ? "opacity-50" : ""
           }`}
         >

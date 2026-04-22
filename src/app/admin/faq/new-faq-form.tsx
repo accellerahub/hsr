@@ -37,7 +37,7 @@ export function NewFaqForm() {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-neutral-100 p-5">
+    <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal">
           Nova pergunta

@@ -39,7 +39,7 @@ export function CtaRow({ cta, locations }: CtaRowProps) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-neutral-100 overflow-hidden">
+    <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
       <div className="p-5 flex flex-col gap-3">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">

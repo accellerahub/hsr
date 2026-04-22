@@ -85,7 +85,7 @@ export default async function AdminDashboardPage() {
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-2xl border border-neutral-100 p-6">
+        <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal/60">
               Top 5 CTAs do mês
@@ -117,7 +117,7 @@ export default async function AdminDashboardPage() {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-neutral-100 p-6">
+        <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-6">
           <h2 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal/60 mb-4">
             Atalhos
           </h2>
@@ -155,7 +155,7 @@ function KpiCard({
   accent?: boolean
 }) {
   return (
-    <div className="bg-white rounded-2xl border border-neutral-100 p-5 flex flex-col gap-3">
+    <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/50">
           {label}
@@ -189,7 +189,7 @@ function Shortcut({
     <Link
       href={href}
       target={external ? "_blank" : undefined}
-      className="flex flex-col gap-2 p-4 rounded-xl border border-neutral-100 hover:border-marrom/30 hover:bg-marrom/5 transition-colors"
+      className="flex flex-col gap-2 p-4 rounded-xl border border-neutral-200 shadow-sm hover:border-marrom/40 hover:shadow-md hover:bg-marrom/5 transition-colors"
     >
       <Icon size={16} />
       <span className="text-sm font-bold text-charcoal">{label}</span>
