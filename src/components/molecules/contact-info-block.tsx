@@ -20,6 +20,7 @@ interface ContactInfoBlockProps extends BaseComponentProps {
   /** Se deve renderizar como link (telefone, email) */
   href?: string
   theme?: "light" | "dark"
+  onClick?: () => void
 }
 
 // -----------------------------------------------------------------------------
@@ -32,6 +33,7 @@ export function ContactInfoBlock({
   href,
   theme = "dark",
   className,
+  onClick,
 }: ContactInfoBlockProps) {
   const isDark = theme === "dark"
 
@@ -60,7 +62,7 @@ export function ContactInfoBlock({
         </span>
 
         {href ? (
-          <Link href={href} className={valueClasses}>
+          <Link href={href} className={valueClasses} onClick={onClick}>
             {value}
           </Link>
         ) : (

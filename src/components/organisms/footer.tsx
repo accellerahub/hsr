@@ -5,12 +5,15 @@
 // Visual: fundo charcoal, layout em colunas responsivo
 // =============================================================================
 
+"use client"
+
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/atoms/logo"
 import { ContactInfoBlock } from "@/components/molecules/contact-info-block"
 import { NavLink } from "@/components/molecules/nav-link"
 import { SocialLinks } from "@/components/molecules/social-links"
+import { trackClick } from "@/lib/track-click"
 import type { BaseComponentProps, FooterData } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -109,6 +112,7 @@ export function Footer({ data, className }: FooterProps) {
                 value={contact.phone}
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
                 theme="dark"
+                onClick={() => trackClick("contato_telefone")}
               />
 
               {/* E-mail */}
@@ -118,6 +122,7 @@ export function Footer({ data, className }: FooterProps) {
                 value={contact.email}
                 href={`mailto:${contact.email}`}
                 theme="dark"
+                onClick={() => trackClick("contato_email")}
               />
             </div>
 
@@ -146,6 +151,13 @@ export function Footer({ data, className }: FooterProps) {
                 className="text-xs text-white/30 hover:text-white/60 transition-colors"
               >
                 Termos de Uso
+              </Link>
+              <Link
+                href="/admin/login"
+                className="text-xs text-white/20 hover:text-white/50 transition-colors"
+                aria-label="Área restrita da equipe"
+              >
+                Área restrita
               </Link>
             </div>
           </div>

@@ -13,6 +13,7 @@ import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
 import { BodyText } from "@/components/atoms/body-text"
 import { Button } from "@/components/atoms/button"
+import { trackClick } from "@/lib/track-click"
 import type { BaseComponentProps, HeroData } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -71,7 +72,7 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(145deg, rgba(20,20,20,0.88) 0%, rgba(20,20,20,0.72) 45%, rgba(20,20,20,0.45) 100%)",
+              "linear-gradient(145deg, rgba(20,20,20,0.68) 0%, rgba(20,20,20,0.48) 45%, rgba(20,20,20,0.25) 100%)",
           }}
         />
       </div>
@@ -132,29 +133,16 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
             variant="primary"
             size="lg"
             href={ctaPrimary.href}
-            onClick={onCtaClick}
+            onClick={() => {
+              trackClick("atendimento_whatsapp")
+              onCtaClick?.()
+            }}
           >
             {ctaPrimary.label}
           </Button>
         </div>
       </div>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* INDICADOR DE SCROLL                                               */}
-      {/* ---------------------------------------------------------------- */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "absolute bottom-8 left-1/2 -translate-x-1/2 z-10",
-          "flex flex-col items-center gap-2",
-          "animate-bounce opacity-60"
-        )}
-      >
-        <span className="text-white text-xs font-semibold tracking-widest uppercase">
-          Scroll
-        </span>
-        <div className="w-px h-8 bg-white/60" />
-      </div>
     </section>
   )
 }

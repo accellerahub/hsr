@@ -14,6 +14,7 @@ import { Button } from "@/components/atoms/button"
 import { FeatureCard } from "@/components/molecules/feature-card"
 import { TestimonialCard } from "@/components/molecules/testimonial-card"
 import { useIntersection } from "@/hooks/use-intersection"
+import { trackClick } from "@/lib/track-click"
 import type { BaseComponentProps, B2BData } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -83,7 +84,12 @@ export function B2BSection({ data, className }: B2BSectionProps) {
 
           {/* CTA alinhado à direita no desktop */}
           <div className="flex-shrink-0">
-            <Button variant="primary" size="md" href={cta.href}>
+            <Button
+              variant="primary"
+              size="md"
+              href={cta.href}
+              onClick={() => trackClick("consultoria_medica_whatsapp")}
+            >
               {cta.label}
             </Button>
           </div>

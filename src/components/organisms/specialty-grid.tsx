@@ -15,6 +15,7 @@ import { BodyText } from "@/components/atoms/body-text"
 import { ServiceCard } from "@/components/molecules/service-card"
 import { ModalOverlay } from "@/components/organisms/modal-overlay"
 import { useIntersection } from "@/hooks/use-intersection"
+import { trackClick } from "@/lib/track-click"
 import type { BaseComponentProps, EspecialidadesData, EspecialidadeItem } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -66,6 +67,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
           href="https://wa.me/message/NZIPXRZ4SKUHM1"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackClick("atendimento_whatsapp")}
           className={cn(
             "inline-flex items-center justify-center px-6 py-3 rounded-full",
             "bg-ouro text-white font-bold text-sm",
