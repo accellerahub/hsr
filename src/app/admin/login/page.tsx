@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { Logo } from "@/components/atoms/logo"
 import { LoginForm } from "./login-form"
 
 export const metadata = {
@@ -19,14 +20,7 @@ export default function AdminLoginPage() {
       </Link>
 
       <div className="w-full max-w-[460px] flex flex-col items-center gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">
-            HSR
-          </h1>
-          <p className="text-xs text-white/50 uppercase tracking-kicker">
-            Hospital São Rafael
-          </p>
-        </div>
+        <Logo variant="light" height={56} />
 
         <div className="w-full bg-white rounded-2xl p-8 sm:p-10 shadow-2xl">
           <div className="flex flex-col items-center gap-3 mb-8">

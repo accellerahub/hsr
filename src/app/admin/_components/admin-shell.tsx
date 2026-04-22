@@ -12,6 +12,7 @@ import {
   Users,
   ShieldCheck,
 } from "lucide-react"
+import { Logo } from "@/components/atoms/logo"
 import { logoutAction } from "../login/actions"
 
 interface AdminShellProps {
@@ -57,8 +58,8 @@ export function AdminShell({ user, children }: AdminShellProps) {
     <div className="min-h-screen flex bg-neutral-50">
       <aside className="w-64 bg-white border-r border-neutral-200 flex flex-col">
         <div className="p-6 border-b border-neutral-100">
-          <div className="flex flex-col gap-1">
-            <span className="text-xl font-extrabold text-charcoal tracking-tight">HSR</span>
+          <div className="flex flex-col gap-2">
+            <Logo variant="default" height={32} />
             <span className="text-[10px] font-extrabold uppercase tracking-kicker text-marrom">
               Painel Staff
             </span>
