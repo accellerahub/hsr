@@ -51,4 +51,11 @@ storybook-static/
 # --- Claude Code (cache local) ---
 .claude/
 
+# --- Seeds com credenciais (rodam localmente) ---
+scripts/seed-users.mjs
+
+# --- Supabase CLI local ---
+supabase/.temp/
+supabase/.branches/
+
 .vercel

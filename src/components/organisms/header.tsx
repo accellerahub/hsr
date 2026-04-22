@@ -15,6 +15,7 @@ import { Logo } from "@/components/atoms/logo"
 import { Button } from "@/components/atoms/button"
 import { NavLink } from "@/components/molecules/nav-link"
 import { useScrollSpy } from "@/hooks/use-scroll-spy"
+import { trackClick } from "@/lib/track-click"
 import type { NavItem, NavCTA, BaseComponentProps } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -220,7 +221,11 @@ export function Header({
               variant="primary"
               size="sm"
               href={cta.href}
-              onClick={(e) => { e.preventDefault(); handleNavClick(cta.href) }}
+              onClick={(e) => {
+                e.preventDefault()
+                trackClick("atendimento_whatsapp")
+                handleNavClick(cta.href)
+              }}
             >
               {cta.label}
             </Button>
@@ -318,7 +323,11 @@ export function Header({
             variant="primary"
             size="md"
             href={cta.href}
-            onClick={(e) => { e.preventDefault(); handleNavClick(cta.href) }}
+            onClick={(e) => {
+              e.preventDefault()
+              trackClick("atendimento_whatsapp")
+              handleNavClick(cta.href)
+            }}
             className="w-full justify-center"
           >
             {cta.label}

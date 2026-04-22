@@ -9,7 +9,8 @@ import type { Metadata, Viewport } from "next"
 import { Montserrat } from "next/font/google"
 import "./globals.css"
 import { SITE_METADATA, SCHEMA_DATA, NAV_ITEMS, NAV_CTA } from "@/lib/constants"
-import { Header } from "@/components/organisms/header"
+import { SiteHeader } from "@/components/organisms/site-header"
+import { getCtaMap, pickCta } from "@/lib/cms"
 
 // -----------------------------------------------------------------------------
 // FONTE — Montserrat com todos os pesos usados no Design System
@@ -102,7 +103,10 @@ function SchemaJsonLd() {
 // -----------------------------------------------------------------------------
 // LAYOUT RAIZ
 // -----------------------------------------------------------------------------
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const ctaMap = await getCtaMap()
+  const navCta = pickCta(ctaMap, "atendimento_whatsapp", { ...NAV_CTA })
+
   return (
     <html lang="pt-BR" className={montserrat.variable}>
       <head>
@@ -110,10 +114,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${montserrat.className} bg-creme text-charcoal antialiased`}>
 
-        {/* Header — fora do <main> para semântica correta */}
-        <Header
+        {/* Header — fora do <main> para semântica correta. Oculto em /admin */}
+        <SiteHeader
           navItems={[...NAV_ITEMS]}
-          cta={{ ...NAV_CTA }}
+          cta={navCta}
         />
 
         {/* Conteúdo principal */}

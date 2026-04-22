@@ -32,7 +32,7 @@ interface BodyTextProps extends BaseComponentProps {
 // -----------------------------------------------------------------------------
 const colorStyles: Record<NonNullable<BodyTextProps["color"]>, string> = {
   default:     "text-charcoal",
-  muted:       "text-charcoal/60",
+  muted:       "text-charcoal/75",
   light:       "text-white",
   "light-muted": "text-white/70",
 }

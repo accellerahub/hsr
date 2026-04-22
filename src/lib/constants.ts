@@ -125,7 +125,7 @@ export const SERVICOS_DATA = {
   kicker: "ESTRUTURA HOSPITALAR",
   headline: "Infraestrutura completa em um único complexo integrado.",
   description:
-    "Tudo o que o seu procedimento exige, integrado no mesmo complexo — sem dispersão, sem deslocamento, sem atrito.",
+    "Tudo o que o seu procedimento exige, integrado no mesmo complexo, sem dispersão, sem deslocamento, sem atrito.",
   items: [
     {
       id: "centro-cirurgico",
@@ -145,7 +145,7 @@ export const SERVICOS_DATA = {
     },
     {
       id: "imd",
-      title: "IMD — Instituto Médico e Diagnóstico",
+      title: "IMD Instituto Médico e Diagnóstico",
       description:
         "O IMD do Hospital São Rafael reúne consultas e exames em um só lugar, com mais precisão, agilidade e muito mais conforto.",
       icon: "microscope",
@@ -179,7 +179,7 @@ export const SERVICOS_DATA = {
       id: "praca-alimentacao",
       title: "Praça de Alimentação",
       description:
-        "Alimentação de qualidade para pacientes e público externo, acompanhantes, equipe médica e público externo dentro do complexo.",
+        "Alimentação de qualidade para pacientes, acompanhantes, equipe médica e público externo dentro do complexo.",
       icon: "utensils",
       image: "/assets/images/servicos/praca-alimentacao.jpg",
     },
@@ -637,13 +637,13 @@ export const FAQ_DATA = {
       id: "faq-1",
       question: "Como funciona o fluxo de atendimento particular?",
       answer:
-        "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento via WhatsApp ou central de atendimento. Na sequência, você realiza consulta e exames no IMD — Instituto Médico e Diagnóstico —, onde todas as informações já são inseridas digitalmente no prontuário integrado. Com o preparo concluído, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo esse trajeto acontece sem sair do nosso complexo.",
+        "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento pela nossa central de atendimento, que organiza cada etapa de acordo com a sua necessidade: consultas, exames, check-ups e preparação cirúrgica. Na sequência, você realiza consultas e exames no IMD, Instituto Médico e Diagnóstico, onde todas as informações já são inseridas digitalmente no prontuário integrado. Com o preparo concluído, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo esse trajeto acontece sem sair do nosso complexo.",
     },
     {
       id: "faq-2",
       question: "Meu cirurgião pode operar no São Rafael?",
       answer:
-        "Sim. O Hospital São Rafael opera no modelo de hospital aberto, permitindo que médicos credenciados realizem procedimentos em nossas instalações. O processo de credenciamento é feito por meio da nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades disponíveis. Uma vez credenciado, o médico conta com 22 salas cirúrgicas equipadas com tecnologia de última geração, instrumentadores especializados, suporte técnico dedicado via WhatsApp e giro de sala de 40 minutos. Para iniciar o processo, entre em contato pelo botão \"Falar com Consultoria Médica Institucional\".",
+        "Sim. O Hospital São Rafael é um hospital de corpo clínico aberto, o que significa que qualquer médico com registro ativo e em situação regular no conselho pode solicitar credenciamento para realizar procedimentos em nossas instalações, sem a necessidade de vínculo empregatício com o hospital. O processo é conduzido pela nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades e protocolos aplicáveis. Uma vez credenciado, o cirurgião conta com 22 salas cirúrgicas equipadas com tecnologia de última geração, instrumentadores especializados, suporte técnico dedicado e giro de sala de 40 minutos, garantindo previsibilidade e eficiência para a sua agenda. Para iniciar o processo, entre em contato pelo botão \"Falar com Consultoria Médica Institucional\".",
     },
     {
       id: "faq-3",

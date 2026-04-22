@@ -40,6 +40,7 @@ import {
   FAQ_DATA,
   FOOTER_DATA,
 } from "@/lib/constants"
+import { getCtaMap, getActiveFaqs, pickCta } from "@/lib/cms"
 
 import type {
   HeroData,
@@ -57,7 +58,32 @@ import type {
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function HomeTemplate() {
+export async function HomeTemplate() {
+  const [ctaMap, dbFaqs] = await Promise.all([getCtaMap(), getActiveFaqs()])
+
+  const heroCta = pickCta(ctaMap, "atendimento_whatsapp", {
+    label: HERO_DATA.ctaPrimary.label,
+    href: HERO_DATA.ctaPrimary.href,
+  })
+  const b2bCta = pickCta(ctaMap, "consultoria_medica_whatsapp", {
+    label: B2B_DATA.cta.label,
+    href: B2B_DATA.cta.href,
+  })
+
+  const heroData = { ...HERO_DATA, ctaPrimary: heroCta }
+  const b2bData = { ...B2B_DATA, cta: b2bCta }
+  const faqData =
+    dbFaqs.length > 0
+      ? {
+          ...FAQ_DATA,
+          items: dbFaqs.map((f) => ({
+            id: f.id,
+            question: f.question,
+            answer: f.answer,
+          })),
+        }
+      : FAQ_DATA
+
   return (
     <>
       {/* ================================================================= */}
@@ -65,7 +91,7 @@ export function HomeTemplate() {
       {/* Vídeo fullscreen, headline revisada, CTA principal                */}
       {/* ================================================================= */}
       <HeroSection
-        data={HERO_DATA as unknown as HeroData}
+        data={heroData as unknown as HeroData}
       />
 
       {/* ================================================================= */}
@@ -131,7 +157,7 @@ export function HomeTemplate() {
       {/* Fundo charcoal. Feature cards + depoimentos + CTA consultoria     */}
       {/* ================================================================= */}
       <B2BSection
-        data={B2B_DATA as unknown as B2BData}
+        data={b2bData as unknown as B2BData}
       />
 
       {/* ================================================================= */}
@@ -139,7 +165,7 @@ export function HomeTemplate() {
       {/* Layout 2 colunas: heading sticky + accordion                      */}
       {/* ================================================================= */}
       <FAQSection
-        data={FAQ_DATA as unknown as FAQData}
+        data={faqData as unknown as FAQData}
         background="creme"
       />
 
