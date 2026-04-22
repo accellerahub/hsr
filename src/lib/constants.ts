@@ -110,7 +110,7 @@ export const DIFERENCIAIS_DATA = {
     { label: "Conheça o Centro Cirúrgico", href: "#servicos" },
   ],
   image: {
-    src: "/assets/images/diferenciais-hsr.jpg",
+    src: "/assets/images/diferenciais-hsr-v2.png",
     alt: "Infraestrutura tecnológica do Hospital São Rafael",
   },
 } as const
@@ -132,7 +132,7 @@ export const SERVICOS_DATA = {
       description:
         "22 salas equipadas com tecnologia de última geração para procedimentos de alta complexidade.",
       icon: "scalpel",
-      image: "/assets/images/servicos/centro-cirurgico.jpg",
+      image: "/assets/images/servicos/centro-cirurgico-v2.jpg",
     },
     {
       id: "internacao",
@@ -164,7 +164,7 @@ export const SERVICOS_DATA = {
       description:
         "Tecnologia de ponta para aceleração da recuperação e prevenção de complicações pós-cirúrgicas.",
       icon: "activity",
-      image: "/assets/images/servicos/hiperbarica.jpeg",
+      image: "/assets/images/servicos/hiperbarica_2.jpg",
     },
     {
       id: "centro-convencoes",
