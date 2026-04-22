@@ -98,7 +98,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
     headline: "22 salas para o mais alto padrão em cirurgias eletivas.",
     subheadline:
       "Tecnologia robótica, laparoscopia avançada e equipe multidisciplinar integrada para o sucesso do seu procedimento.",
-    backgroundImage: "/assets/images/servicos/centro-cirurgico.jpg",
+    backgroundImage: "/assets/images/servicos/centro-cirurgico-v2.jpg",
     pills: [
       "22 Salas Cirúrgicas",
       "Tecnologia Robótica",
@@ -113,15 +113,15 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
       "Cada detalhe das nossas salas foi planejado para dar ao cirurgião controle total sobre o ambiente e ao paciente máxima segurança. Da entrada no centro cirúrgico à sala de recuperação, tudo é gerenciado por protocolos rígidos de qualidade.",
     images: [
       {
-        src: "/assets/images/servicos/centro-cirurgico.jpg",
+        src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
         alt: "Sala cirúrgica equipada com tecnologia de última geração",
       },
       {
-        src: "/assets/images/servicos/centro-cirurgico.jpg",
+        src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
         alt: "Bloco cirúrgico com equipe médica",
       },
       {
-        src: "/assets/images/servicos/centro-cirurgico.jpg",
+        src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
         alt: "Área de recuperação pós-operatória",
       },
     ],
