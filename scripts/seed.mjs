@@ -134,9 +134,9 @@ console.log(`  ✓ ${locInserted.length} locations`)
 const faqs = [
   {
     position: 1,
-    question: "Como funciona o fluxo de atendimento particular?",
+    question: "Quais são as formas de atendimento no Hospital São Rafael?",
     answer:
-      "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento pela nossa central de atendimento, que organiza cada etapa de acordo com a sua necessidade: consultas, exames, check-ups e preparação cirúrgica. Na sequência, você realiza consultas e exames no IMD, Instituto Médico e Diagnóstico, onde todas as informações já são inseridas digitalmente no prontuário integrado. Com o preparo concluído, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo esse trajeto acontece sem sair do nosso complexo.",
+      "No Hospital São Rafael o atendimento é particular e estruturado para oferecer praticidade, agilidade e uma experiência integrada, respeitando a necessidade de cada paciente. Você pode ser atendido de diferentes formas. Pelo IMD (Instituto Médico e Diagnóstico): especializado em consultas, exames e check-ups. Aqui, você encontra diversas especialidades e a possibilidade de realizar tudo no mesmo local, sem burocracia e com integração entre consulta e diagnóstico. Para procedimentos cirúrgicos: o hospital conta com uma estrutura completa para cirurgias eletivas, incluindo preparo pré-operatório, avaliação pré-anestésica e acompanhamento durante todo o processo. Para sessões de terapia hiperbárica: tratamento moderno e altamente eficaz em diversas condições clínicas. É indicada principalmente para recuperação pós-cirúrgica, cicatrização de feridas e tratamento de infecções. Independentemente da forma de entrada, o Hospital São Rafael oferece estrutura completa em um único local, integração entre consultas, exames e procedimentos, e equipe especializada com tecnologia de ponta. Tudo pensado para tornar sua jornada mais simples, segura e eficiente.",
   },
   {
     position: 2,
