@@ -32,17 +32,17 @@ export function ServiceBreadcrumb({ items, className }: ServiceBreadcrumbProps) 
     <nav
       aria-label="Trilha de navegação"
       className={cn(
-        "w-full bg-creme border-b border-charcoal/5",
+        "w-full bg-charcoal/95 backdrop-blur-sm border-b border-white/10",
         className
       )}
     >
-      <ol className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-1 text-xs text-charcoal/60">
+      <ol className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-1 text-xs text-white/60">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
           return (
             <li key={`${item.href}-${index}`} className="flex items-center gap-1">
               {isLast ? (
-                <span aria-current="page" className="font-semibold text-charcoal">
+                <span aria-current="page" className="font-semibold text-white">
                   {item.label}
                 </span>
               ) : (
@@ -54,7 +54,7 @@ export function ServiceBreadcrumb({ items, className }: ServiceBreadcrumbProps) 
                 </Link>
               )}
               {!isLast && (
-                <ChevronRight size={12} className="text-charcoal/30" aria-hidden />
+                <ChevronRight size={12} className="text-white/30" aria-hidden />
               )}
             </li>
           )
