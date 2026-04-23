@@ -24,6 +24,8 @@ import type { ServiceGalleryBlockData } from "@/lib/services-content"
 // -----------------------------------------------------------------------------
 interface ServiceGalleryBlockProps extends BaseComponentProps {
   data: ServiceGalleryBlockData
+  /** Reservar gutter direito para TOC sidebar (xl+) */
+  reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
@@ -117,7 +119,7 @@ function ImageCarousel({
 // -----------------------------------------------------------------------------
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
-export function ServiceGalleryBlock({ data, className }: ServiceGalleryBlockProps) {
+export function ServiceGalleryBlock({ data, className, reserveRightGutter = false }: ServiceGalleryBlockProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, description, images, features, cta } = data
@@ -129,7 +131,10 @@ export function ServiceGalleryBlock({ data, className }: ServiceGalleryBlockProp
       aria-labelledby="gallery-block-heading"
       className={cn("w-full py-20 lg:py-30 bg-white", className)}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={cn(
+        "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+        reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
+      )}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Coluna esquerda — carrossel */}

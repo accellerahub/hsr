@@ -21,6 +21,8 @@ import type { ServiceTestimonialsData } from "@/lib/services-content"
 // -----------------------------------------------------------------------------
 interface TestimonialsCarouselProps extends BaseComponentProps {
   data: ServiceTestimonialsData
+  /** Reservar gutter direito para TOC sidebar (xl+) */
+  reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
@@ -38,7 +40,7 @@ function getInitials(name: string): string {
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function TestimonialsCarousel({ data, className }: TestimonialsCarouselProps) {
+export function TestimonialsCarousel({ data, className, reserveRightGutter = false }: TestimonialsCarouselProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -91,7 +93,10 @@ export function TestimonialsCarousel({ data, className }: TestimonialsCarouselPr
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={cn(
+        "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+        reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
+      )}>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16 items-center">
 
           {/* Coluna esquerda — headline + controles */}

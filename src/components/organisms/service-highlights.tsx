@@ -20,12 +20,14 @@ import type { ServiceHighlightsData } from "@/lib/services-content"
 // -----------------------------------------------------------------------------
 interface ServiceHighlightsProps extends BaseComponentProps {
   data: ServiceHighlightsData
+  /** Reservar gutter direito para TOC sidebar (xl+) */
+  reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServiceHighlights({ data, className }: ServiceHighlightsProps) {
+export function ServiceHighlights({ data, className, reserveRightGutter = false }: ServiceHighlightsProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, items } = data
@@ -37,7 +39,10 @@ export function ServiceHighlights({ data, className }: ServiceHighlightsProps) {
       aria-labelledby="highlights-heading"
       className={cn("w-full py-20 lg:py-30 bg-creme", className)}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={cn(
+        "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+        reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
+      )}>
 
         {/* Cabeçalho */}
         <div

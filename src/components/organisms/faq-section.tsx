@@ -21,12 +21,14 @@ interface FAQSectionProps extends BaseComponentProps {
   data: FAQData
   /** Fundo da seção */
   background?: "white" | "creme"
+  /** Reservar gutter direito para TOC sidebar (xl+) */
+  reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function FAQSection({ data, background = "white", className }: FAQSectionProps) {
+export function FAQSection({ data, background = "white", className, reserveRightGutter = false }: FAQSectionProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.15, once: true })
 
   const { kicker, headline, items } = data
@@ -42,7 +44,10 @@ export function FAQSection({ data, background = "white", className }: FAQSection
         className
       )}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={cn(
+        "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+        reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
+      )}>
         {/* Layout de 2 colunas no desktop: heading à esquerda, accordion à direita */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
 
