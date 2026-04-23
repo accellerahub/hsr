@@ -151,6 +151,13 @@ async function readStructureClient() {
 
 export const getServiceDataBySlug = cache(
   async (slug: string): Promise<ServiceDetailData | null> => {
+    // Prefer rich static content when available (pilot SEO pages:
+    // intro/indications/equipment/protocols/journey/related blocks).
+    const staticContent = SERVICES_CONTENT[slug]
+    if (staticContent && (staticContent.intro || staticContent.navSections)) {
+      return staticContent
+    }
+
     const supabase = await readStructureClient()
     const { data } = await supabase
       .from("hospital_structure")
@@ -163,7 +170,7 @@ export const getServiceDataBySlug = cache(
 
     if (data) return buildFromRow(data as StructureRow)
 
-    return SERVICES_CONTENT[slug] ?? null
+    return staticContent ?? null
   }
 )
 

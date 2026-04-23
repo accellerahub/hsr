@@ -1,19 +1,25 @@
 // =============================================================================
 // SERVICE-DETAIL-TEMPLATE.TSX — Template | Hospital São Rafael
 // =============================================================================
-// Composição da página de detalhe de serviço.
-// Aceita ServiceDetailData e distribui para os organismos correspondentes.
+// Template SEO-expandido para páginas /servicos/[slug].
 //
-// NOTA: Header é fornecido pelo root layout (layout.tsx).
-//       Footer é renderizado aqui, assim como HomeTemplate.
+// Blocos (ordem, todos full-bleed):
+//   0. Schema JSON-LD (head)
+//   1. Breadcrumb
+//   2. ServicePageHero
+//   3. ServiceIntroBlock          (opcional — O que é X)
+//   4. ServiceIndicationsBlock    (opcional — Indicações)
+//   5. ServiceGalleryBlock        (infraestrutura HSR)
+//   6. ServiceEquipmentBlock      (opcional — equipamentos)
+//   7. ServiceHighlights          (métricas)
+//   8. ServiceProtocolsBlock      (opcional — protocolos + certif)
+//   9. ServiceJourneyBlock        (opcional — jornada passos)
+//   10. TestimonialsCarousel
+//   11. FAQSection
+//   12. ServiceRelatedBlock       (opcional — cross-link)
+//   13. Footer
 //
-// Ordem:
-//   1. ServicePageHero
-//   2. ServiceGalleryBlock
-//   3. ServiceHighlights
-//   4. TestimonialsCarousel
-//   5. FAQSection (reuso do O08)
-//   6. Footer (O09)
+// Sidebar TOC (ServiceSidebarNav): flutuante fixed no desktop XL.
 // =============================================================================
 
 import { Footer } from "@/components/organisms/footer"
@@ -22,6 +28,15 @@ import { ServiceGalleryBlock } from "@/components/organisms/service-gallery-bloc
 import { ServiceHighlights } from "@/components/organisms/service-highlights"
 import { TestimonialsCarousel } from "@/components/organisms/testimonials-carousel"
 import { FAQSection } from "@/components/organisms/faq-section"
+import { ServiceBreadcrumb } from "@/components/molecules/service-breadcrumb"
+import { ServiceSidebarNav } from "@/components/organisms/service-sidebar-nav"
+import { ServiceIntroBlock } from "@/components/organisms/service-intro-block"
+import { ServiceIndicationsBlock } from "@/components/organisms/service-indications-block"
+import { ServiceEquipmentBlock } from "@/components/organisms/service-equipment-block"
+import { ServiceProtocolsBlock } from "@/components/organisms/service-protocols-block"
+import { ServiceJourneyBlock } from "@/components/organisms/service-journey-block"
+import { ServiceRelatedBlock } from "@/components/organisms/service-related-block"
+import { ServiceSchema } from "@/components/atoms/service-schema"
 
 import { FOOTER_DATA } from "@/lib/constants"
 import type { ServiceDetailData } from "@/lib/services-content"
@@ -32,35 +47,106 @@ import type { FooterData } from "@/types"
 // -----------------------------------------------------------------------------
 interface ServiceDetailTemplateProps {
   data: ServiceDetailData
+  /** URL absoluta da página (usada no schema JSON-LD) */
+  canonicalUrl?: string
+  /** Tipo do schema principal */
+  schemaType?: "MedicalProcedure" | "MedicalClinic"
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServiceDetailTemplate({ data }: ServiceDetailTemplateProps) {
-  const { hero, galleryBlock, highlights, testimonials, faq } = data
+export function ServiceDetailTemplate({
+  data,
+  canonicalUrl = `https://hsr-xi.vercel.app/servicos/${data.slug}`,
+  schemaType = "MedicalClinic",
+}: ServiceDetailTemplateProps) {
+  const {
+    navSections,
+    hero,
+    intro,
+    indications,
+    galleryBlock,
+    equipment,
+    highlights,
+    protocols,
+    journey,
+    testimonials,
+    faq,
+    related,
+  } = data
+
+  const breadcrumbItems = [
+    { label: "Início", href: "/" },
+    { label: "Serviços", href: "/#servicos" },
+    { label: hero.headline, href: `/servicos/${data.slug}` },
+  ]
 
   return (
     <>
-      {/* Hero da página de serviço */}
-      <ServicePageHero data={hero} />
-
-      {/* Bloco de galeria + features */}
-      <ServiceGalleryBlock data={galleryBlock} />
-
-      {/* Highlights / métricas */}
-      <ServiceHighlights data={highlights} />
-
-      {/* Carrossel de depoimentos */}
-      <TestimonialsCarousel data={testimonials} />
-
-      {/* FAQ — reutiliza o organismo existente */}
-      <FAQSection
-        data={faq}
-        background="white"
+      {/* Schema JSON-LD */}
+      <ServiceSchema
+        data={data}
+        canonicalUrl={canonicalUrl}
+        schemaType={schemaType}
       />
 
-      {/* Footer global */}
+      {/* Breadcrumb */}
+      <ServiceBreadcrumb items={breadcrumbItems} />
+
+      {/* TOC flutuante (desktop XL+) */}
+      {navSections && navSections.length > 0 && (
+        <ServiceSidebarNav sections={navSections} />
+      )}
+
+      {/* Hero */}
+      <ServicePageHero data={hero} />
+
+      {/* 1. Intro long-form */}
+      {intro && <ServiceIntroBlock data={intro} sectionId="intro" />}
+
+      {/* 2. Indicações */}
+      {indications && (
+        <ServiceIndicationsBlock data={indications} sectionId="indicacoes" />
+      )}
+
+      {/* 3. Gallery + features (infraestrutura HSR) */}
+      <div id="infraestrutura" className="scroll-mt-24">
+        <ServiceGalleryBlock data={galleryBlock} />
+      </div>
+
+      {/* 4. Equipamentos */}
+      {equipment && (
+        <ServiceEquipmentBlock data={equipment} sectionId="equipamentos" />
+      )}
+
+      {/* 5. Highlights / métricas */}
+      <div id="numeros" className="scroll-mt-24">
+        <ServiceHighlights data={highlights} />
+      </div>
+
+      {/* 6. Protocolos */}
+      {protocols && (
+        <ServiceProtocolsBlock data={protocols} sectionId="protocolos" />
+      )}
+
+      {/* 7. Jornada */}
+      {journey && <ServiceJourneyBlock data={journey} sectionId="jornada" />}
+
+      {/* 8. Testimonials */}
+      <div id="depoimentos" className="scroll-mt-24">
+        <TestimonialsCarousel data={testimonials} />
+      </div>
+
+      {/* 9. FAQ */}
+      <div id="faq" className="scroll-mt-24">
+        <FAQSection data={faq} background="white" />
+      </div>
+
+      {/* 10. Conteúdo relacionado */}
+      {related && <ServiceRelatedBlock data={related} sectionId="relacionados" />}
+
+      {/* Footer */}
       <Footer data={FOOTER_DATA as unknown as FooterData} />
     </>
   )
