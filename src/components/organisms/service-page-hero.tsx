@@ -9,6 +9,8 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -17,18 +19,21 @@ import { Button } from "@/components/atoms/button"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps } from "@/types"
 import type { ServiceHeroData } from "@/lib/services-content"
+import type { BreadcrumbItem } from "@/components/molecules/service-breadcrumb"
 
 // -----------------------------------------------------------------------------
 // TYPES
 // -----------------------------------------------------------------------------
 interface ServicePageHeroProps extends BaseComponentProps {
   data: ServiceHeroData
+  /** Trilha de navegação exibida como overlay no topo do hero */
+  breadcrumbItems?: BreadcrumbItem[]
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServicePageHero({ data, className }: ServicePageHeroProps) {
+export function ServicePageHero({ data, className, breadcrumbItems }: ServicePageHeroProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, subheadline, backgroundImage, pills } = data
@@ -60,6 +65,39 @@ export function ServicePageHero({ data, className }: ServicePageHeroProps) {
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/90"
       />
+
+      {/* Breadcrumb overlay no topo do hero */}
+      {breadcrumbItems && breadcrumbItems.length > 0 && (
+        <nav
+          aria-label="Trilha de navegação"
+          className="absolute top-16 lg:top-20 left-0 right-0 z-10"
+        >
+          <ol className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-1 text-xs text-white/70">
+            {breadcrumbItems.map((item, index) => {
+              const isLast = index === breadcrumbItems.length - 1
+              return (
+                <li key={`${item.href}-${index}`} className="flex items-center gap-1">
+                  {isLast ? (
+                    <span aria-current="page" className="font-semibold text-white">
+                      {item.label}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="hover:text-ouro transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                  {!isLast && (
+                    <ChevronRight size={12} className="text-white/40" aria-hidden />
+                  )}
+                </li>
+              )
+            })}
+          </ol>
+        </nav>
+      )}
 
       {/* Conteúdo */}
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">

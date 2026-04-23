@@ -28,7 +28,6 @@ import { ServiceGalleryBlock } from "@/components/organisms/service-gallery-bloc
 import { ServiceHighlights } from "@/components/organisms/service-highlights"
 import { TestimonialsCarousel } from "@/components/organisms/testimonials-carousel"
 import { FAQSection } from "@/components/organisms/faq-section"
-import { ServiceBreadcrumb } from "@/components/molecules/service-breadcrumb"
 import { ServiceSidebarNav } from "@/components/organisms/service-sidebar-nav"
 import { ServiceIntroBlock } from "@/components/organisms/service-intro-block"
 import { ServiceIndicationsBlock } from "@/components/organisms/service-indications-block"
@@ -91,19 +90,13 @@ export function ServiceDetailTemplate({
         schemaType={schemaType}
       />
 
-      {/* Spacer para header fixed (h-16 lg:h-20) */}
-      <div className="h-16 lg:h-20" aria-hidden />
-
-      {/* Breadcrumb */}
-      <ServiceBreadcrumb items={breadcrumbItems} />
-
       {/* TOC flutuante (desktop XL+) */}
       {navSections && navSections.length > 0 && (
         <ServiceSidebarNav sections={navSections} />
       )}
 
-      {/* Hero */}
-      <ServicePageHero data={hero} />
+      {/* Hero (breadcrumb renderizado como overlay interno) */}
+      <ServicePageHero data={hero} breadcrumbItems={breadcrumbItems} />
 
       {/* 1. Intro long-form */}
       {intro && <ServiceIntroBlock data={intro} sectionId="intro" />}
