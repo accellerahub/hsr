@@ -142,19 +142,19 @@ const faqs = [
     position: 2,
     question: "Meu cirurgião pode operar no São Rafael?",
     answer:
-      'Sim. O Hospital São Rafael é um hospital de corpo clínico aberto, o que significa que qualquer médico com registro ativo e em situação regular no conselho pode solicitar credenciamento para realizar procedimentos em nossas instalações, sem a necessidade de vínculo empregatício com o hospital. O processo é conduzido pela nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades e protocolos aplicáveis. Uma vez credenciado, o cirurgião conta com 22 salas cirúrgicas equipadas com tecnologia de última geração, instrumentadores especializados, suporte técnico dedicado e giro de sala de 40 minutos, garantindo previsibilidade e eficiência para a sua agenda. Para iniciar o processo, entre em contato pelo botão "Falar com Consultoria Médica Institucional".',
+      "Sim! O Hospital São Rafael é um hospital cirúrgico eletivo, multi-especialidades, com corpo clínico aberto. Isso significa que médicos com registro ativo e regular no conselho profissional podem solicitar credenciamento para realizar procedimentos em nossas instalações. O processo de credenciamento é conduzido com rigor técnico e institucional, sendo avaliado pelo Diretor Técnico e pelo Diretor Clínico, que analisam o perfil do profissional, sua formação, experiência, especialidades e a aderência aos protocolos assistenciais do hospital.",
   },
   {
     position: 3,
-    question: "Qual a real diferença do Upgrade de Acomodação?",
+    question: "O que é o upgrade de acomodação no Hospital São Rafael?",
     answer:
-      "O Upgrade de Acomodação transforma o período pós-cirúrgico em uma experiência de recuperação diferenciada. Além de todo o suporte clínico, você conta com quarto de maior privacidade e conforto, atendimento exclusivo e personalizado e um ambiente pensado para que você descanse com tranquilidade. É a escolha ideal para quem deseja uma internação com padrão elevado de hotelaria hospitalar, unindo excelência médica e bem-estar em cada detalhe.",
+      "O upgrade de acomodação é a possibilidade de o paciente realizar a troca da acomodação inicialmente prevista, passando de um leito standard para uma suíte luxo. Essa opção permite que o paciente realize sua recuperação em um ambiente com mais conforto, privacidade e uma experiência diferenciada durante o período pós-cirúrgico. No Hospital São Rafael, todas as internações contam com o mesmo padrão de excelência assistencial, independentemente da acomodação escolhida. A principal diferença está na experiência de acomodação. Na acomodação standard o paciente conta com um ambiente funcional e seguro, com toda a estrutura necessária para uma recuperação adequada, incluindo acomodação confortável para o acompanhante. Já na suíte luxo, o paciente passa a ter: quarto com maior espaço e privacidade, banheiro privativo, sofá cama para acompanhante, comodidades como frigobar e cafeteira. O upgrade é ideal para quem valoriza mais conforto, privacidade e tranquilidade durante o período de recuperação.",
   },
   {
     position: 4,
-    question: "Como o IMD agiliza minha cirurgia?",
+    question: "Como o IMD proporciona mais segurança na minha cirurgia?",
     answer:
-      "O IMD funciona de forma totalmente integrada ao bloco cirúrgico do Hospital São Rafael. Consultas, exames de imagem e laudos realizados no Instituto alimentam automaticamente o prontuário digital do centro cirúrgico — sem reencaminhamentos, repetição de informações ou perda de dados. Quando chega o dia da cirurgia, seu médico já tem acesso a tudo que precisa, com rastreabilidade total. Esse modelo elimina a espera e a burocracia que normalmente existe entre diagnóstico e procedimento, garantindo mais agilidade, segurança e previsibilidade para você e para o seu cirurgião.",
+      "O IMD, Instituto Médico e Diagnóstico do Hospital São Rafael, concentra em um único local todas as etapas necessárias para o preparo e o acompanhamento do paciente. No IMD, você pode realizar: consultas com especialistas, exames pré e pós operatórios essenciais para a segurança do procedimento, exames de imagem, exames laboratoriais e check-ups completos. Nossa estrutura permite que todo o seu preparo cirúrgico aconteça de forma mais prática e integrada, sem a necessidade de deslocamentos entre diferentes locais. Além disso, todas as informações ficam registradas em um prontuário eletrônico único, o que facilita o acompanhamento pelo seu médico desde a solicitação dos exames até o pós-operatório.",
   },
 ]
 
