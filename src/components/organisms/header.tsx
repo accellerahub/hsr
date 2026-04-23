@@ -164,10 +164,10 @@ export function Header({
           "fixed top-0 left-0 right-0 z-[20]",
           // Transição suave
           "transition-all duration-500 ease-in-out",
-          // Estado transparente (no hero)
-          !isScrolled && "bg-transparent",
-          // Estado sólido (após scroll)
-          isScrolled && "bg-charcoal/95 backdrop-blur-sm shadow-lg",
+          // Estado transparente (apenas home no hero)
+          !isScrolled && !isServicePage && "bg-transparent",
+          // Estado sólido: sempre em páginas de serviço, ou após scroll na home
+          (isScrolled || isServicePage) && "bg-charcoal/95 backdrop-blur-sm shadow-lg",
           className
         )}
         role="banner"

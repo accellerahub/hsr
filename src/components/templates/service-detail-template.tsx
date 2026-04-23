@@ -91,6 +91,9 @@ export function ServiceDetailTemplate({
         schemaType={schemaType}
       />
 
+      {/* Spacer para header fixed (h-16 lg:h-20) */}
+      <div className="h-16 lg:h-20" aria-hidden />
+
       {/* Breadcrumb */}
       <ServiceBreadcrumb items={breadcrumbItems} />
 

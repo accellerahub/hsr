@@ -69,7 +69,7 @@ export function ServiceSidebarNav({ sections, className }: ServiceSidebarNavProp
     <aside
       aria-label="Navegação nesta página"
       className={cn(
-        "hidden xl:flex fixed left-6 2xl:left-10 top-1/2 -translate-y-1/2 z-20",
+        "hidden xl:flex fixed right-6 2xl:right-10 top-1/2 -translate-y-1/2 z-[15]",
         "flex-col gap-1",
         "max-h-[75vh] overflow-y-auto",
         "bg-white/95 backdrop-blur-sm border border-charcoal/10",
@@ -77,7 +77,7 @@ export function ServiceSidebarNav({ sections, className }: ServiceSidebarNavProp
         "transition-all duration-500",
         visible
           ? "opacity-100 translate-x-0"
-          : "opacity-0 -translate-x-4 pointer-events-none",
+          : "opacity-0 translate-x-4 pointer-events-none",
         className
       )}
     >
