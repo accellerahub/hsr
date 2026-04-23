@@ -115,7 +115,7 @@ export function ServiceDetailTemplate({
 
       {/* 3. Gallery + features (infraestrutura HSR) */}
       <div id="infraestrutura" className="scroll-mt-24">
-        <ServiceGalleryBlock data={galleryBlock} />
+        <ServiceGalleryBlock data={galleryBlock} reserveRightGutter />
       </div>
 
       {/* 4. Equipamentos */}
@@ -125,7 +125,7 @@ export function ServiceDetailTemplate({
 
       {/* 5. Highlights / métricas */}
       <div id="numeros" className="scroll-mt-24">
-        <ServiceHighlights data={highlights} />
+        <ServiceHighlights data={highlights} reserveRightGutter />
       </div>
 
       {/* 6. Protocolos */}
@@ -138,12 +138,12 @@ export function ServiceDetailTemplate({
 
       {/* 8. Testimonials */}
       <div id="depoimentos" className="scroll-mt-24">
-        <TestimonialsCarousel data={testimonials} />
+        <TestimonialsCarousel data={testimonials} reserveRightGutter />
       </div>
 
       {/* 9. FAQ */}
       <div id="faq" className="scroll-mt-24">
-        <FAQSection data={faq} background="white" />
+        <FAQSection data={faq} background="white" reserveRightGutter />
       </div>
 
       {/* 10. Conteúdo relacionado */}

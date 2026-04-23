@@ -37,7 +37,7 @@ export function ServiceProtocolsBlock({
       aria-labelledby={`${sectionId}-heading`}
       className={cn("w-full py-20 lg:py-28 bg-charcoal text-white scroll-mt-24", className)}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
         <header className="flex flex-col gap-4 max-w-[760px] mb-12 lg:mb-16">
           <Kicker color="ouro">{kicker}</Kicker>
           <Heading as="h2" color="light" id={`${sectionId}-heading`}>
