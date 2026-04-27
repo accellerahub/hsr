@@ -10,6 +10,56 @@ import { cn } from "@/lib/utils"
 import type { BaseComponentProps } from "@/types"
 
 // -----------------------------------------------------------------------------
+// ÍCONES CUSTOM (não disponíveis em lucide-react)
+// -----------------------------------------------------------------------------
+
+interface CustomSvgProps {
+  size?: number
+  strokeWidth?: number
+  className?: string
+  "aria-label"?: string
+  "aria-hidden"?: boolean
+}
+
+/** Ícone anatômico — útero com tubas e ovários. Usado em Ginecologia. */
+function UterusIcon({
+  size = 24,
+  strokeWidth = 1.5,
+  className,
+  "aria-label": ariaLabel,
+  "aria-hidden": ariaHidden,
+}: CustomSvgProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-label={ariaLabel}
+      aria-hidden={ariaHidden}
+    >
+      <circle cx="4" cy="6" r="1.5" />
+      <circle cx="20" cy="6" r="1.5" />
+      <path d="M5.5 6c2 0 3.5 1.5 3.5 3.5v3c0 1.6-.5 3.2-1.5 4.5" />
+      <path d="M18.5 6c-2 0-3.5 1.5-3.5 3.5v3c0 1.6.5 3.2 1.5 4.5" />
+      <path d="M7.5 17h9" />
+      <path d="M12 17v3.5" />
+      <path d="M10 20.5h4" />
+    </svg>
+  )
+}
+
+const CUSTOM_ICONS: Record<string, React.FC<CustomSvgProps>> = {
+  Uterus: UterusIcon,
+}
+
+// -----------------------------------------------------------------------------
 // TIPOS
 // -----------------------------------------------------------------------------
 
@@ -71,6 +121,7 @@ export const ICON_MAP: Record<string, IconName> = {
   brain:         "Brain",
   stethoscope:   "Stethoscope",
   baby:          "Baby",
+  uterus:        "Uterus" as IconName,
   eye:           "Eye",
 
   // Produtos
@@ -121,6 +172,20 @@ export function Icon({
   className,
   "aria-label": ariaLabel,
 }: IconProps) {
+  // Custom SVGs (não disponíveis no lucide-react)
+  const Custom = CUSTOM_ICONS[name as unknown as string]
+  if (Custom) {
+    return (
+      <Custom
+        size={size}
+        strokeWidth={strokeWidth}
+        aria-label={ariaLabel}
+        aria-hidden={!ariaLabel}
+        className={cn(colorStyles[color], className)}
+      />
+    )
+  }
+
   const LucideComponent = icons[name] as LucideIcon | undefined
 
   if (!LucideComponent) {
