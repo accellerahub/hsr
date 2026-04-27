@@ -261,7 +261,7 @@ export const ESPECIALIDADES_DATA = {
       title: "Ginecologia",
       description:
         "Histerectomia laparoscópica, miomectomia e tratamento da endometriose com precisão minimamente invasiva e protocolos de recuperação rápida.",
-      icon: "baby",
+      icon: "uterus",
       procedures: [
         "Histerectomia laparoscópica",
         "Miomectomia",
@@ -434,7 +434,7 @@ export const PRODUTOS_DATA = {
           description:
             "Técnico de enfermagem dedicado exclusivamente ao seu cuidado, com acompanhamento contínuo, segurança e atenção personalizada durante toda a internação.",
           icon: "heart-handshake",
-          image: "/assets/images/produtos/tecnico-enfermagem-v2.jpg",
+          image: "/assets/images/produtos/tecnico-enfermagem-v4.jpg",
         },
       ],
     },
