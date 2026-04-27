@@ -35,6 +35,8 @@ import { ServiceEquipmentBlock } from "@/components/organisms/service-equipment-
 import { ServiceProtocolsBlock } from "@/components/organisms/service-protocols-block"
 import { ServiceJourneyBlock } from "@/components/organisms/service-journey-block"
 import { ServiceRelatedBlock } from "@/components/organisms/service-related-block"
+import { ServiceInlineCta } from "@/components/organisms/service-inline-cta"
+import { ServiceStickyCta } from "@/components/molecules/service-sticky-cta"
 import { ServiceSchema } from "@/components/atoms/service-schema"
 
 import { FOOTER_DATA } from "@/lib/constants"
@@ -75,10 +77,23 @@ export function ServiceDetailTemplate({
     related,
   } = data
 
+  // Label curto p/ 3º nível do breadcrumb (evita wrap em mobile e cobertura do H1).
+  // Prioridade: kicker (title-case) → slug formatado.
+  const breadcrumbShortLabel = hero.kicker
+    ? hero.kicker
+        .toLowerCase()
+        .split(" ")
+        .map((w) => (w.length > 2 ? w[0].toUpperCase() + w.slice(1) : w))
+        .join(" ")
+    : data.slug
+        .split("-")
+        .map((w) => w[0].toUpperCase() + w.slice(1))
+        .join(" ")
+
   const breadcrumbItems = [
     { label: "Início", href: "/" },
     { label: "Serviços", href: "/#servicos" },
-    { label: hero.headline, href: `/servicos/${data.slug}` },
+    { label: breadcrumbShortLabel, href: `/servicos/${data.slug}` },
   ]
 
   return (
@@ -103,7 +118,15 @@ export function ServiceDetailTemplate({
 
       {/* 2. Indicações */}
       {indications && (
-        <ServiceIndicationsBlock data={indications} sectionId="indicacoes" />
+        <>
+          <ServiceIndicationsBlock data={indications} sectionId="indicacoes" />
+          <ServiceInlineCta
+            kicker="SEU CASO ESTÁ ENTRE AS INDICAÇÕES?"
+            headline="Fale com nossa equipe e entenda se esse é o caminho para você."
+            description="Atendimento humano, rápido e particular. Tire suas dúvidas com a equipe responsável e descubra se o tratamento se aplica ao seu quadro clínico."
+            variant="creme"
+          />
+        </>
       )}
 
       {/* 3. Gallery + features (infraestrutura HSR) */}
@@ -127,7 +150,17 @@ export function ServiceDetailTemplate({
       )}
 
       {/* 7. Jornada */}
-      {journey && <ServiceJourneyBlock data={journey} sectionId="jornada" />}
+      {journey && (
+        <>
+          <ServiceJourneyBlock data={journey} sectionId="jornada" />
+          <ServiceInlineCta
+            kicker="PRONTO PARA COMEÇAR?"
+            headline="Agende sua avaliação e dê o próximo passo."
+            description="Nossa equipe de relacionamento orienta cada etapa, do primeiro contato à finalização do tratamento. Atendimento exclusivamente particular, com agilidade e acolhimento."
+            variant="charcoal"
+          />
+        </>
+      )}
 
       {/* 8. Testimonials */}
       <div id="depoimentos" className="scroll-mt-24">
@@ -139,11 +172,22 @@ export function ServiceDetailTemplate({
         <FAQSection data={faq} background="white" reserveRightGutter />
       </div>
 
+      {/* CTA pós-FAQ — última oportunidade de captura antes do footer */}
+      <ServiceInlineCta
+        kicker="AINDA TEM DÚVIDAS?"
+        headline="Converse direto com a equipe — sem compromisso."
+        description="Mesmo após a leitura, é normal restarem questões específicas sobre o seu caso. Fale com a gente pelo canal de sua preferência."
+        variant="creme"
+      />
+
       {/* 10. Conteúdo relacionado */}
       {related && <ServiceRelatedBlock data={related} sectionId="relacionados" />}
 
       {/* Footer */}
       <Footer data={FOOTER_DATA as unknown as FooterData} />
+
+      {/* Sticky CTA mobile — sempre acessível durante a leitura */}
+      <ServiceStickyCta />
     </>
   )
 }

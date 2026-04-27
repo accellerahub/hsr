@@ -44,7 +44,7 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="service-hero-heading"
       className={cn(
-        "relative w-full min-h-[80vh] flex items-center",
+        "relative w-full min-h-[600px] lg:min-h-[80vh] flex items-end lg:items-center",
         "overflow-hidden",
         className
       )}
@@ -100,8 +100,8 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
       )}
 
       {/* Conteúdo */}
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="max-w-[760px] flex flex-col gap-6">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 lg:py-32">
+        <div className="max-w-[760px] flex flex-col gap-4 lg:gap-6">
 
           {/* Kicker */}
           <div
@@ -139,8 +139,8 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
           >
             <BodyText
               color="light-muted"
-              size="lg"
-              className="max-w-[560px]"
+              size="base"
+              className="max-w-[560px] lg:!text-lg"
             >
               {subheadline}
             </BodyText>
@@ -150,7 +150,7 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
           {pills.length > 0 && (
             <div
               className={cn(
-                "flex flex-wrap gap-2",
+                "grid grid-cols-2 lg:flex lg:flex-wrap gap-1.5 lg:gap-2",
                 "transition-all duration-700 delay-300",
                 hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               )}
@@ -162,11 +162,11 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
                   key={pill}
                   role="listitem"
                   className={cn(
-                    "inline-flex items-center",
-                    "px-4 py-1.5 rounded-full",
-                    "text-xs font-semibold text-white",
+                    "inline-flex items-center justify-center",
+                    "px-3 py-1 lg:px-4 lg:py-1.5 rounded-full",
+                    "text-[11px] lg:text-xs font-semibold text-white",
                     "bg-white/10 backdrop-blur-sm border border-white/20",
-                    "whitespace-nowrap"
+                    "text-center leading-tight"
                   )}
                 >
                   {pill}
@@ -175,9 +175,10 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
             </div>
           )}
 
-          {/* CTA */}
+          {/* CTA — WhatsApp único */}
           <div
             className={cn(
+              "w-full sm:w-auto",
               "transition-all duration-700 delay-[400ms]",
               hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             )}
@@ -185,9 +186,10 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
             <Button
               variant="primary"
               size="lg"
-              href="#contato"
+              href="https://wa.me/message/NZIPXRZ4SKUHM1"
+              className="!whitespace-nowrap w-full sm:w-auto justify-center"
             >
-              Falar com Atendimento
+              Falar no WhatsApp
             </Button>
           </div>
 

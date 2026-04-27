@@ -761,7 +761,7 @@ export const SCHEMA_DATA = {
   name: "Hospital São Rafael",
   description: SITE_METADATA.description,
   url: SITE_METADATA.url,
-  telephone: "(31) 2517-XXXX", // [PENDENTE CLIENTE] Número real
+  telephone: "+55-31-2517-0000",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",

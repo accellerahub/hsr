@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>HSR — Apresentação Diretoria | Accellera | Abril/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --creme:#FDF1E7; --branco:#FFFFFF; --charcoal:#2E2E2E;
+    --ouro:#9b6c4a; --ouro-hover:#7a5339; --azul:#00A5D6; --cobre:#C08A63;
+    --success:#2D8F4E; --warning:#FFB800; --error:#D94040;
+    --neutral-100:#F5F5F5; --neutral-200:#E5E5E5; --neutral-300:#D4D4D4;
+    --neutral-400:#A3A3A3; --neutral-500:#737373; --neutral-600:#525252; --neutral-700:#404040;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#1a1a1a;font-family:'Montserrat',sans-serif;padding:32px 16px 80px;display:flex;flex-direction:column;align-items:center;gap:32px}
+  .page-label{color:#fff;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;font-weight:800;opacity:.55;margin-bottom:-12px}
+  .slide{width:1280px;height:720px;background:var(--creme);color:var(--charcoal);position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4)}
+  .slide .edge{position:absolute;top:0;left:0;width:6px;height:100%;background:var(--ouro)}
+  .slide .inner{padding:56px 72px;height:100%;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+  .slide.dense .inner{padding:40px 56px}
+  .kicker{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--ouro)}
+  .kicker .sep{color:var(--neutral-300);margin:0 10px;font-weight:400}
+  .h1{font-size:52px;font-weight:800;line-height:1.08;letter-spacing:-0.02em;margin-top:20px}
+  .h2{font-size:34px;font-weight:700;line-height:1.15;margin-top:14px}
+  .h3{font-size:20px;font-weight:700;line-height:1.25}
+  .sub{font-size:17px;font-weight:400;line-height:1.5;color:var(--neutral-700);margin-top:14px;max-width:900px}
+  .footer-row{display:flex;justify-content:space-between;align-items:flex-end;padding-top:16px;border-top:1px solid var(--neutral-300);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--neutral-500)}
+  .brand{font-weight:800;color:var(--charcoal);letter-spacing:0.15em}
+  .brand .dot{color:var(--ouro);margin:0 8px}
+  .dark{background:var(--charcoal);color:var(--branco)}
+  .dark .kicker{color:var(--cobre)}
+  .dark .h1,.dark .h2,.dark .h3{color:var(--branco)}
+  .dark .sub{color:#d9d4ce}
+  .dark .footer-row{border-top-color:rgba(255,255,255,.15);color:#a8a39d}
+  .dark .brand{color:var(--branco)}
+  .capa .diag{position:absolute;right:-120px;top:-120px;width:480px;height:480px;background:radial-gradient(circle at 30% 30%, rgba(155,108,74,.35), transparent 60%);border-radius:50%;pointer-events:none}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  .card{background:var(--branco);border:1px solid var(--neutral-300);border-top:3px solid var(--ouro);padding:18px 16px;display:flex;flex-direction:column;gap:6px}
+  .card.azul{border-top-color:var(--azul)}
+  .card.cobre{border-top-color:var(--cobre)}
+  .card.success{border-top-color:var(--success)}
+  .card .num{font-size:10px;font-weight:800;letter-spacing:0.2em;color:var(--ouro);text-transform:uppercase}
+  .card.azul .num{color:var(--azul)}
+  .card.cobre .num{color:var(--cobre)}
+  .card.success .num{color:var(--success)}
+  .card .title{font-size:16px;font-weight:700;line-height:1.2}
+  .card .desc{font-size:12px;line-height:1.5;color:var(--neutral-700)}
+  .card .tag{margin-top:auto;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--azul);padding-top:6px}
+
+  .tl-h{display:flex;gap:10px;margin-top:22px;align-items:stretch}
+  .tl-h .step{flex:1;background:var(--branco);border:1px solid var(--neutral-300);padding:14px 12px;position:relative;display:flex;flex-direction:column;gap:4px}
+  .tl-h .step::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--ouro)}
+  .tl-h .step .n{font-size:10px;font-weight:800;letter-spacing:0.2em;color:var(--ouro);text-transform:uppercase}
+  .tl-h .step .t{font-size:14px;font-weight:700;line-height:1.2}
+  .tl-h .step .d{font-size:11px;line-height:1.4;color:var(--neutral-700)}
+
+  .tl-v{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+  .tl-v .row{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center;padding:9px 12px;background:var(--branco);border:1px solid var(--neutral-300);border-left:3px solid var(--ouro)}
+  .tl-v .row.azul{border-left-color:var(--azul)}
+  .tl-v .row.urgent{border-left-color:var(--error)}
+  .tl-v .when{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--ouro)}
+  .tl-v .row.azul .when{color:var(--azul)}
+  .tl-v .row.urgent .when{color:var(--error)}
+  .tl-v .act{font-size:12px;line-height:1.4}
+
+  table.matrix{width:100%;border-collapse:collapse;margin-top:16px;background:var(--branco);font-size:11px}
+  table.matrix th,table.matrix td{border:1px solid var(--neutral-300);padding:8px 10px;text-align:left;vertical-align:top;line-height:1.4}
+  table.matrix th{background:var(--charcoal);color:var(--branco);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-size:10px}
+  table.matrix td.label{background:var(--neutral-100);font-weight:700;color:var(--charcoal)}
+  table.matrix tr td:first-child{font-weight:700;color:var(--ouro);font-size:10px;letter-spacing:0.08em;text-transform:uppercase}
+
+  .stats{display:flex;gap:12px;margin-top:20px}
+  .stats .stat{flex:1;background:var(--branco);border:1px solid var(--neutral-300);padding:14px;text-align:center}
+  .stats .stat .n{font-size:30px;font-weight:800;color:var(--ouro);line-height:1}
+  .stats .stat .l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--neutral-600);margin-top:6px}
+
+  .bullets{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .bullets li{padding-left:22px;position:relative;font-size:14px;line-height:1.5;color:var(--neutral-700)}
+  .bullets li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:2px;background:var(--ouro)}
+  .bullets li strong{color:var(--charcoal);font-weight:700}
+
+  .gantt{margin-top:20px;display:flex;flex-direction:column;gap:5px}
+  .gantt .head{display:grid;grid-template-columns:200px repeat(6,1fr);gap:4px;font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--neutral-600);padding:5px 0;border-bottom:1px solid var(--neutral-300)}
+  .gantt .head .m{text-align:center}
+  .gantt .row{display:grid;grid-template-columns:200px repeat(6,1fr);gap:4px;align-items:center;font-size:11px}
+  .gantt .row .l{font-weight:700;color:var(--charcoal);padding:4px 0;font-size:12px}
+  .gantt .bar{height:20px;background:var(--neutral-200);border-radius:2px;position:relative;grid-column:2 / span 6}
+  .gantt .fill{position:absolute;top:0;height:100%;background:var(--ouro);border-radius:2px;color:var(--branco);font-size:9px;font-weight:700;display:flex;align-items:center;padding:0 6px;white-space:nowrap;overflow:hidden;letter-spacing:0.05em}
+  .gantt .fill.azul{background:var(--azul)}
+  .gantt .fill.cobre{background:var(--cobre)}
+  .gantt .fill.success{background:var(--success)}
+
+  .dual{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .dual .col{background:var(--branco);border:1px solid var(--neutral-300);padding:18px}
+  .dual .col.left{border-top:3px solid var(--error)}
+  .dual .col.right{border-top:3px solid var(--success)}
+  .dual .col h4{font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px}
+  .dual .col.left h4{color:var(--error)}
+  .dual .col.right h4{color:var(--success)}
+  .dual .col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .dual .col li{font-size:12px;line-height:1.45;color:var(--neutral-700);padding-left:16px;position:relative}
+  .dual .col li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:2px}
+  .dual .col.left li::before{background:var(--error)}
+  .dual .col.right li::before{background:var(--success)}
+
+  .agenda{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .agenda .item{display:grid;grid-template-columns:54px 1fr auto;gap:18px;align-items:center;padding:12px 16px;background:var(--branco);border:1px solid var(--neutral-300);border-left:4px solid var(--ouro)}
+  .agenda .item .n{font-size:24px;font-weight:800;color:var(--ouro);line-height:1}
+  .agenda .item .t{font-size:16px;font-weight:700}
+  .agenda .item .d{font-size:12px;color:var(--neutral-600);margin-top:2px}
+  .agenda .item .pg{font-size:10px;font-weight:700;color:var(--neutral-500);letter-spacing:0.1em}
+
+  @media print{body{background:#fff;padding:0;gap:0}.page-label{display:none}.slide{box-shadow:none;page-break-after:always}}
+</style>
+</head>
+<body>
+
+<div class="page-label">Slide 01 — Capa</div>
+<section class="slide dark capa">
+  <div class="edge"></div><div class="diag"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">Accellera <span class="sep">|</span> Apresentação Diretoria HSR</div>
+      <h1 class="h1">Estratégia de Marketing<br>Fase 1 — Abril/2026</h1>
+      <p class="sub">Shift comercial. ROI mensurável. Site definitivo, atribuição ponta a ponta e funis dedicados para IMD, Hiperbárica, Unidade de Transição e Upgrade de Acomodação.</p>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>22 de Abril, 2026 · Apresentação: Pedro (Accellera)</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 02 — Agenda</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">Agenda</div>
+      <h2 class="h2">O que vamos cobrir hoje.</h2>
+      <div class="agenda">
+        <div class="item"><div class="n">01</div><div><div class="t">Como mediremos ROI das campanhas</div><div class="d">Metodologia: Pedro H (pixels/tags) + Marcelo (CRM) + leitura iterativa.</div></div><div class="pg">p. 04</div></div>
+        <div class="item"><div class="n">02</div><div><div class="t">Jornada IMD — funil + 7 followups</div><div class="d">Porta de entrada do ecossistema HSR. Atração → expansão.</div></div><div class="pg">p. 05–06</div></div>
+        <div class="item"><div class="n">03</div><div><div class="t">Funis dos 3 produtos rodando hoje</div><div class="d">Hiperbárica, Unidade de Transição, Upgrade de Acomodação.</div></div><div class="pg">p. 07–08</div></div>
+        <div class="item"><div class="n">04</div><div><div class="t">Workflow Instagram com shift comercial</div><div class="d">De institucional para depoimentos + oferta + CTA consultor.</div></div><div class="pg">p. 09</div></div>
+        <div class="item"><div class="n">05</div><div><div class="t">Workflow Projetos Site + Próximos Passos</div><div class="d">Cronograma definitivo abril → setembro, metas curto/médio/longo.</div></div><div class="pg">p. 10–14</div></div>
+      </div>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Agenda · 02 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 03 — Diagnóstico</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">01 <span class="sep">/</span> Diagnóstico</div>
+      <h2 class="h2">Ponto de partida — honesto e mensurável.</h2>
+      <div class="stats">
+        <div class="stat"><div class="n">R$3,1k</div><div class="l">Investido Meta (30d)</div></div>
+        <div class="stat"><div class="n">94</div><div class="l">Conversas WhatsApp</div></div>
+        <div class="stat"><div class="n">R$33,48</div><div class="l">Custo/conversa</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Leads rastreados</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">CRM conectado</div></div>
+      </div>
+      <div class="dual">
+        <div class="col left">
+          <h4>Gaps identificados</h4>
+          <ul>
+            <li>Sem Pixel/GA4/GTM no site — atribuição cega.</li>
+            <li>Conversas WA não qualificadas em CRM estruturado.</li>
+            <li>Campanhas topo de funil sem CTA comercial.</li>
+            <li>IG com foco institucional, sem jornada de conversão.</li>
+            <li>Sem relatório ROAS por produto.</li>
+          </ul>
+        </div>
+        <div class="col right">
+          <h4>Ativos prontos para acelerar</h4>
+          <ul>
+            <li>Site one-page Next.js 15 pronto para produção.</li>
+            <li>3 campanhas Meta rodando (Upgrade, Transição, Hiperbárica).</li>
+            <li>CRM Marcelo contratado — pronto para integrar.</li>
+            <li>Pedro H dedicado a tráfego pago com CAPI + GTM server.</li>
+            <li>Shift comercial aprovado pela diretoria.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Diagnóstico · 03 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 04 — ROI Metodologia</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">01 <span class="sep">/</span> Como mediremos ROI</div>
+      <h2 class="h2">Do clique ao procedimento — atribuição ponta a ponta.</h2>
+      <p class="sub">Hoje o tráfego pago não conecta com fechamento comercial. Fase 1 instala a infraestrutura para medir cada real até cirurgia realizada.</p>
+      <div class="grid-3">
+        <div class="card"><div class="num">01</div><div class="title">Pixels & Tags</div><div class="desc">Pedro H instala Meta Pixel + CAPI, Google Ads, GA4 e GTM server-side quando o site subir. Eventos padronizados por produto.</div><div class="tag">Pedro H · Accellera</div></div>
+        <div class="card azul"><div class="num">02</div><div class="title">CRM conectado</div><div class="desc">Marcelo (CRM HSR) + Pedro H integram funil comercial. Cada lead carrega origem, campanha e criativo até conversão final.</div><div class="tag">Marcelo · fornecedor HSR</div></div>
+        <div class="card cobre"><div class="num">03</div><div class="title">Leitura iterativa</div><div class="desc">Dashboard semanal: CPL por produto, taxa lead→consulta, consulta→procedimento, ROAS consolidado. Ajuste contínuo.</div><div class="tag">Accellera · revisão semanal</div></div>
+      </div>
+      <ul class="bullets" style="margin-top:18px">
+        <li><strong>1º dado real de ROAS:</strong> Jul/2026 (60 dias após site definitivo + CRM integrado).</li>
+        <li><strong>Relatório mensal padronizado:</strong> por produto, campanha, criativo e origem.</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>ROI Metodologia · 04 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 05 — IMD Funil</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">02 <span class="sep">/</span> IMD — porta de entrada do ecossistema</div>
+      <h2 class="h2">Funil em 5 estágios — do desconhecido ao procedimento.</h2>
+      <div class="tl-h">
+        <div class="step"><div class="n">01 Atrair</div><div class="t">Mostrar IMD existe</div><div class="d">Meta Ads + Google Search "consulta particular BH" + Reels FAQ.</div></div>
+        <div class="step"><div class="n">02 Engajar</div><div class="t">Vencer dúvida</div><div class="d">Landing /servicos/imd + carrossel didático + retargeting.</div></div>
+        <div class="step"><div class="n">03 Converter</div><div class="t">Capturar lead</div><div class="d">CTA "Fale com consultor" + depoimento Reels.</div></div>
+        <div class="step"><div class="n">04 Agendar</div><div class="t">Lead vira consulta</div><div class="d">Consultor comercial WA + CRM Marcelo.</div></div>
+        <div class="step"><div class="n">05 Expandir</div><div class="t">Cross-sell ecossistema</div><div class="d">Consulta → exame → retorno → cirurgia + Hiperbárica + Transição.</div></div>
+      </div>
+      <div class="stats" style="margin-top:24px">
+        <div class="stat"><div class="n">&lt;R$100</div><div class="l">CPL alvo</div></div>
+        <div class="stat"><div class="n">≥35%</div><div class="l">Lead → consulta</div></div>
+        <div class="stat"><div class="n">≥20%</div><div class="l">Consulta → retorno</div></div>
+        <div class="stat"><div class="n">≥8%</div><div class="l">Retorno → cirurgia</div></div>
+      </div>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>IMD Funil · 05 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 06 — IMD Followups</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">02 <span class="sep">/</span> IMD — esteira de 7 followups</div>
+      <h2 class="h2">Nenhum lead esfria — automação + humano onde importa.</h2>
+      <div class="tl-v">
+        <div class="row urgent"><div class="when">D+0 &lt;30min</div><div class="act"><strong>Lead entra.</strong> Consultor abre WA com template — taxa de resposta cai 50% após 30min. <em>Responsável: Comercial HSR.</em></div></div>
+        <div class="row"><div class="when">D+0 +2h</div><div class="act">Sem resposta → 2ª tentativa WA + SMS curto. <em>Comercial.</em></div></div>
+        <div class="row"><div class="when">D+1</div><div class="act">Lead sem agenda → "Posso te ajudar a escolher horário?" <em>Comercial.</em></div></div>
+        <div class="row urgent"><div class="when">D+3 no-show</div><div class="act"><strong>Faltou consulta</strong> → reagendamento ativo WA. <em>Comercial.</em></div></div>
+        <div class="row azul"><div class="when">D+1 pós-consulta</div><div class="act">NPS curto + lembrete retorno + preparo exame. <em>CRM automático.</em></div></div>
+        <div class="row azul"><div class="when">D+7 pós-exame</div><div class="act">Resultado pronto → agenda retorno + oferta ecossistema se indicado. <em>Médico + Comercial.</em></div></div>
+        <div class="row azul"><div class="when">D+180 / D+365</div><div class="act">Sem conversão cirúrgica → check-up preventivo anual. <em>CRM automático.</em></div></div>
+      </div>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>IMD Followups · 06 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 07 — Matriz 3 Produtos</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">03 <span class="sep">/</span> Produtos rodando hoje — funil comparado</div>
+      <h2 class="h2">Hiperbárica · Unidade de Transição · Upgrade de Acomodação.</h2>
+      <table class="matrix">
+        <thead><tr><th style="width:14%">Estágio</th><th style="width:28%">Hiperbárica</th><th style="width:29%">Unidade de Transição</th><th style="width:29%">Upgrade de Acomodação</th></tr></thead>
+        <tbody>
+          <tr><td>01 Atrair</td><td>Meta: dor/pós-op/ferida + Google "oxigenoterapia bh"</td><td>Meta: familiares + cirurgiões + carrossel didático</td><td>Retargeting /servicos/* + custom audience IG</td></tr>
+          <tr><td>02 Engajar</td><td>Landing /hiperbarica + FAQ indicações</td><td>Landing /transicao + tour + depoimento familiar</td><td>Landing /upgrade + tour suíte + "o que inclui"</td></tr>
+          <tr><td>03 Converter</td><td>CTA "Avaliação com consultor"</td><td>CTA "Fale com consultor" (urgência pós-alta)</td><td>CTA "Conheça a suíte" (upsell cirurgia agendada)</td></tr>
+          <tr><td>04 Agendar</td><td>Avaliação médica → pacote de sessões</td><td>Visita técnica família + aprovação cirurgião</td><td>Confirmação pré-cirurgia + reserva suíte</td></tr>
+          <tr><td>05 Expandir</td><td>Cross-sell: ortopedia, feridas, pós-cirúrgico</td><td>Cross-sell: cirurgia futura + hiperbárica pós-op</td><td>Retorno consulta + indicação família</td></tr>
+          <tr><td class="label">Decisor</td><td>Paciente / médico</td><td>Familiar / cirurgião</td><td>Paciente eletivo premium</td></tr>
+          <tr><td class="label">CPL alvo</td><td>&lt; R$80</td><td>&lt; R$200</td><td>&lt; R$200</td></tr>
+          <tr><td class="label">Janela decisão</td><td>Dias a semanas</td><td>Horas a dias</td><td>Pré-cirurgia</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Matriz 3 Produtos · 07 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 08 — Followups 3 Produtos</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">03 <span class="sep">/</span> Esteira de followups por produto</div>
+      <h2 class="h2">Timing adaptado à janela comercial de cada produto.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="num">Hiperbárica</div><div class="title">Volume recorrente</div>
+          <div class="desc">
+            <strong>D+0 &lt;30min:</strong> WA avaliação<br>
+            <strong>D+2 sem resp.:</strong> vídeo + reengaja<br>
+            <strong>D+7:</strong> agenda 1ª sessão<br>
+            <strong>A cada 5 sessões:</strong> NPS + progresso<br>
+            <strong>D+30 pós-alta:</strong> indicação + review
+          </div>
+          <div class="tag">10–40 sessões / paciente</div>
+        </div>
+        <div class="card cobre">
+          <div class="num">Unidade de Transição</div><div class="title">Janela crítica</div>
+          <div class="desc">
+            <strong>D+0 &lt;30min:</strong> WA urgente pré-alta<br>
+            <strong>D+0 +3h:</strong> ligação ativa<br>
+            <strong>D+1:</strong> visita técnica família<br>
+            <strong>D+alta:</strong> kit boas-vindas<br>
+            <strong>D+7 saída:</strong> NPS família + depoimento<br>
+            <strong>D+30:</strong> retorno + cross-sell hiperbárica
+          </div>
+          <div class="tag">decisão em dias</div>
+        </div>
+        <div class="card success">
+          <div class="num">Upgrade Acomodação</div><div class="title">Upsell confirmação</div>
+          <div class="desc">
+            <strong>D+0 &lt;30min:</strong> WA disponibilidade<br>
+            <strong>D-7 pré-cirurgia:</strong> confirma reserva<br>
+            <strong>D-1 pré-cirurgia:</strong> welcome + check-in<br>
+            <strong>D+alta:</strong> NPS + foto/depoimento<br>
+            <strong>D+30:</strong> indicação família + review
+          </div>
+          <div class="tag">lead já tem cirurgia</div>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top:18px">
+        <li><strong>Hiperbárica:</strong> volume recorrente — followup prende retenção.</li>
+        <li><strong>Transição:</strong> janela curta — velocidade &lt;30min é crítica.</li>
+        <li><strong>Upgrade:</strong> upsell — jornada é confirmação + experiência.</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Followups 3 Produtos · 08 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 09 — Instagram Shift</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">04 <span class="sep">/</span> Instagram — shift de institucional para comercial</div>
+      <h2 class="h2">Conteúdo com CTA, depoimento e jornada de conversão.</h2>
+      <div class="dual">
+        <div class="col left">
+          <h4>Planejamento atual (mar–mai)</h4>
+          <ul>
+            <li>Foco institucional + obra + eventos (Motiva/Preservé).</li>
+            <li>Sem CTA explícito para consultor comercial.</li>
+            <li>0% pilar depoimentos comerciais reais.</li>
+            <li>IMD aparece sem oferta/fluxo de agendamento.</li>
+            <li>Post não conecta a landing com tracking.</li>
+          </ul>
+        </div>
+        <div class="col right">
+          <h4>Planejamento ajustado (fase 1)</h4>
+          <ul>
+            <li>30% depoimentos reais · 20% oferta/CTA · 20% bastidores rigor.</li>
+            <li>CTA "Fale com nosso consultor" em 100% dos posts comerciais.</li>
+            <li>4 posts/semana + 3 stories/dia + 1 Reels longo/semana.</li>
+            <li>Cada post com UTM → landing rastreada → WA com tag origem.</li>
+            <li>QA Luísa (HSR) &lt; 24h padrão.</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top:14px">
+        <li><strong>Meta mês 1:</strong> +1.000 seguidores · ≥40 cliques consultor/mês · ER &gt; 2%.</li>
+        <li><strong>Dependências:</strong> liberação depoimentos pacientes + cirurgiões parceiros dispostos a aparecer.</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Instagram Shift · 09 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 10 — Workflow Projetos Site</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">05 <span class="sep">/</span> Projetos Site — cronograma Abril → Setembro 2026</div>
+      <h2 class="h2">Do site definitivo ao ecossistema completo em 6 meses.</h2>
+      <div class="gantt">
+        <div class="head"><div></div><div class="m">Abr</div><div class="m">Mai</div><div class="m">Jun</div><div class="m">Jul</div><div class="m">Ago</div><div class="m">Set</div></div>
+        <div class="row"><div class="l">Site definitivo no ar</div><div class="bar"><div class="fill" style="left:0;width:20%">22/04 → 05/05</div></div></div>
+        <div class="row"><div class="l">Pedro H — rastreamento completo</div><div class="bar"><div class="fill azul" style="left:10%;width:25%">29/04 → 20/05</div></div></div>
+        <div class="row"><div class="l">Subir campanhas Google Ads</div><div class="bar"><div class="fill cobre" style="left:25%;width:15%">12/05 → 28/05</div></div></div>
+        <div class="row"><div class="l">Página: Estrutura Hospitalar</div><div class="bar"><div class="fill" style="left:20%;width:22%">05/05 → 27/05</div></div></div>
+        <div class="row"><div class="l">Página: Especialidades</div><div class="bar"><div class="fill" style="left:30%;width:25%">20/05 → 12/06</div></div></div>
+        <div class="row"><div class="l">Página: Produtos & Experiências</div><div class="bar"><div class="fill" style="left:36%;width:22%">28/05 → 17/06</div></div></div>
+        <div class="row"><div class="l">LP B2B Médicos (alta conversão)</div><div class="bar"><div class="fill success" style="left:38%;width:22%">02/06 → 20/06</div></div></div>
+        <div class="row"><div class="l">Área administrativa robusta</div><div class="bar"><div class="fill azul" style="left:43%;width:25%">10/06 → 01/07</div></div></div>
+        <div class="row"><div class="l">Validação cliente + QA final</div><div class="bar"><div class="fill cobre" style="left:55%;width:20%">01/07 → 22/07</div></div></div>
+      </div>
+      <ul class="bullets" style="margin-top:14px">
+        <li><strong>Entregável âncora:</strong> 22/07/2026 — ecossistema web completo no ar com rastreamento ponta a ponta.</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Workflow Site · 10 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 11 — Próximos passos IMD</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">05 <span class="sep">/</span> IMD — próximos passos</div>
+      <h2 class="h2">CRM Marcelo integrado + jornada no ar.</h2>
+      <div class="gantt">
+        <div class="head"><div></div><div class="m">Abr</div><div class="m">Mai</div><div class="m">Jun</div><div class="m">Jul</div><div class="m">Ago</div><div class="m">Set</div></div>
+        <div class="row"><div class="l">Reunião Marcelo + Pedro H</div><div class="bar"><div class="fill azul" style="left:5%;width:8%">28/04 → 05/05</div></div></div>
+        <div class="row"><div class="l">Webhook site → CRM + tags origem</div><div class="bar"><div class="fill" style="left:10%;width:15%">05/05 → 20/05</div></div></div>
+        <div class="row"><div class="l">Esteira 7 followups no ar</div><div class="bar"><div class="fill cobre" style="left:18%;width:18%">15/05 → 02/06</div></div></div>
+        <div class="row"><div class="l">Treinamento comercial (SLA &lt;30min)</div><div class="bar"><div class="fill" style="left:22%;width:10%">20/05 → 27/05</div></div></div>
+        <div class="row"><div class="l">1º relatório ROAS IMD</div><div class="bar"><div class="fill success" style="left:38%;width:7%">25/06 → 02/07</div></div></div>
+        <div class="row"><div class="l">Ciclo de otimização semanal</div><div class="bar"><div class="fill azul" style="left:45%;width:55%">02/07 → contínuo</div></div></div>
+      </div>
+      <ul class="bullets" style="margin-top:16px">
+        <li><strong>Dono técnico:</strong> Pedro H (Accellera) — integração webhook + tags.</li>
+        <li><strong>Dono operacional:</strong> Marcelo (fornecedor HSR) — configuração esteira automática.</li>
+        <li><strong>Dono comercial:</strong> time HSR — resposta &lt;30min como SLA obrigatório.</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Próximos Passos IMD · 11 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 12 — Próximos passos Tráfego Pago</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">05 <span class="sep">/</span> Tráfego Pago — estado atual + próximos passos</div>
+      <h2 class="h2">R$10k/mês dividido com intenção entre Meta e Google.</h2>
+      <table class="matrix">
+        <thead><tr><th>Canal</th><th>Estado atual</th><th>Próximo passo</th><th>Prazo</th></tr></thead>
+        <tbody>
+          <tr><td>Meta — 3 campanhas ativas</td><td>R$3,1k/30d · 94 conversas · 0 atribuição</td><td>Pixel + CAPI + CRM → rebaseline CPL real</td><td>Até 20/05</td></tr>
+          <tr><td>Google Search</td><td>Não ativo</td><td>Subir após site definitivo — 4 campanhas (IMD + 3 produtos)</td><td>Até 28/05</td></tr>
+          <tr><td>Google Display/YouTube</td><td>Não ativo</td><td>Retargeting + awareness premium</td><td>Até 15/06</td></tr>
+          <tr><td>LinkedIn — B2B Cirurgião</td><td>Não ativo</td><td>LP B2B no ar + campanhas com lookalike</td><td>Até 25/06</td></tr>
+          <tr><td class="label">Split verba</td><td colspan="3">Google 35% · Meta B2C 35% · LinkedIn 15% · Meta retargeting 8% · Google B2B 7%</td></tr>
+          <tr><td class="label">KPI principal</td><td colspan="3">Consolidar CPL, ROAS e ticket médio por produto a partir de 25/06</td></tr>
+        </tbody>
+      </table>
+      <ul class="bullets" style="margin-top:14px">
+        <li><strong>Gatekeeper:</strong> Google Ads só sobe após Pedro H validar tracking ponta a ponta.</li>
+        <li><strong>Refresh criativo:</strong> mín. 5 peças Meta/semana para evitar fadiga (frequência &lt; 2,5).</li>
+      </ul>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Próximos Passos Tráfego Pago · 12 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 13 — Metas C/M/L</div>
+<section class="slide dense">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">05 <span class="sep">/</span> Metas — curto, médio e longo prazo</div>
+      <h2 class="h2">O que entregamos em 30, 90 e 180 dias.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="num">Curto — 30 dias (22/05)</div>
+          <div class="title">Infraestrutura no ar</div>
+          <div class="desc">
+            • Site definitivo publicado<br>
+            • Pixel + GA4 + GTM server-side<br>
+            • CRM Marcelo conectado<br>
+            • Google Ads começa a rodar<br>
+            • 1º CPL rastreado real<br>
+            • IG com shift comercial publicado
+          </div>
+          <div class="tag">Pedro H + Marcelo + Renata</div>
+        </div>
+        <div class="card azul">
+          <div class="num">Médio — 90 dias (22/07)</div>
+          <div class="title">Ecossistema + atribuição completa</div>
+          <div class="desc">
+            • 4 páginas novas no ar<br>
+            • LP B2B Médicos alta conversão<br>
+            • Área admin robusta entregue<br>
+            • Esteira 7 followups IMD automatizada<br>
+            • 3 produtos com ROAS rastreado<br>
+            • 1º relatório mensal consolidado<br>
+            • Meta B2B: 2 cirurgiões novos/mês
+          </div>
+          <div class="tag">Accellera + HSR</div>
+        </div>
+        <div class="card cobre">
+          <div class="num">Longo — 180 dias (22/10)</div>
+          <div class="title">Escala e retorno documentado</div>
+          <div class="desc">
+            • ROAS positivo validado<br>
+            • Verba ampliada com base em dado<br>
+            • Base de depoimentos consolidada<br>
+            • LinkedIn ativo com lookalike<br>
+            • Retargeting Display/YT rodando<br>
+            • Fase 2: escalonar verba ou novos produtos<br>
+            • IG: 5.000+ seguidores qualificados
+          </div>
+          <div class="tag">diretoria revisa escopo fase 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Metas C/M/L · 13 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 14 — Decisões de diretoria</div>
+<section class="slide">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">Decisões</div>
+      <h2 class="h2">O que precisamos destravar hoje para o cronograma rodar.</h2>
+      <div class="tl-v">
+        <div class="row urgent"><div class="when">Bloqueante</div><div class="act"><strong>Aprovação LGPD / banner de consentimento</strong> — sem isso não sobe Pixel/GA4 em produção.</div></div>
+        <div class="row urgent"><div class="when">Bloqueante</div><div class="act"><strong>SLA comercial &lt;30min para leads novos</strong> — treinamento + comprometimento time HSR.</div></div>
+        <div class="row"><div class="when">Alta</div><div class="act"><strong>Liberação depoimentos reais</strong> — pacientes + familiares + cirurgiões parceiros.</div></div>
+        <div class="row"><div class="when">Alta</div><div class="act"><strong>Detalhamento oferta B2B</strong> (taxa, academia médica, conforto) para LP de cirurgiões.</div></div>
+        <div class="row azul"><div class="when">Média</div><div class="act"><strong>Cadência de aprovação criativa &lt;48h</strong> — Luísa (HSR) com Renata (Accellera).</div></div>
+        <div class="row azul"><div class="when">Média</div><div class="act"><strong>Validar metas C/M/L</strong> apresentadas — acordo de mensuração compartilhado.</div></div>
+      </div>
+      <p class="sub" style="margin-top:16px"><strong>Documento de apoio:</strong> 45 perguntas estratégicas preparadas em <em>perguntas-diretora-hsr.md</em> — seguimos checklist após reunião.</p>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Decisões · 14 de 15</span></div>
+  </div>
+</section>
+
+<div class="page-label">Slide 15 — Fechamento</div>
+<section class="slide dark">
+  <div class="edge"></div>
+  <div class="inner">
+    <div>
+      <div class="kicker">Fechamento</div>
+      <h1 class="h1">De custo opaco<br>para retorno mensurável.</h1>
+      <p class="sub">Em 90 dias o HSR terá cada real de tráfego rastreado até cirurgia realizada. Em 180 dias, base para decidir escala com dado real.<br><br>Accellera dona do método. HSR dona do resultado.</p>
+    </div>
+    <div class="footer-row"><span class="brand">ACCELLERA <span class="dot">•</span> HSR</span><span>Obrigado · 15 de 15</span></div>
+  </div>
+</section>
+
+</body>
+</html>

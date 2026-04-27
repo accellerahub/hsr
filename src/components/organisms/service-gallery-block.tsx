@@ -97,7 +97,7 @@ function ImageCarousel({
         >
           {images.map((img, i) => (
             <button
-              key={img.src}
+              key={`${img.src}-${i}`}
               role="tab"
               aria-selected={i === activeIndex}
               aria-label={`Ver imagem ${i + 1}: ${img.alt}`}

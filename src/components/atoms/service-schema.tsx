@@ -27,13 +27,26 @@ const HSR_ORGANIZATION = {
   "@id": "https://hsr-xi.vercel.app/#hospital",
   name: "Hospital São Rafael",
   url: "https://hsr-xi.vercel.app",
-  telephone: "+55-31-0000-0000",
+  telephone: "+55-31-2517-0000",
+  image: "https://hsr-xi.vercel.app/og-image.png",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Av. Raja Gabáglia, 1380",
     addressLocality: "Belo Horizonte",
     addressRegion: "MG",
+    postalCode: "30441-194",
     addressCountry: "BR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -19.9437,
+    longitude: -43.9582,
+  },
+  sameAs: [
+    "https://www.instagram.com/hospitalsaorafaelmg/",
+    "https://www.linkedin.com/company/hospitalsaorafaelmg/",
+    "https://www.youtube.com/@hospitalsaorafaelmg",
+  ],
   medicalSpecialty: [
     "Surgery",
     "Orthopedic",

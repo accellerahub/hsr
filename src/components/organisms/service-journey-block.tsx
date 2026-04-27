@@ -1,8 +1,8 @@
 // =============================================================================
 // SERVICE-JOURNEY-BLOCK.TSX — Organismo | Hospital São Rafael
 // =============================================================================
-// Jornada do paciente passo-a-passo. Timeline visual numerada.
-// Reduz ansiedade + captura busca "como é o processo/tratamento".
+// Jornada do paciente passo-a-passo. Timeline editorial: cartão branco por
+// etapa, bullet outlined em cobre conectado por linha vertical com gradient.
 // =============================================================================
 
 import { cn } from "@/lib/utils"
@@ -34,15 +34,19 @@ export function ServiceJourneyBlock({
     <section
       id={sectionId}
       aria-labelledby={`${sectionId}-heading`}
-      className={cn("w-full py-20 lg:py-28 bg-creme scroll-mt-24", className)}
+      className={cn(
+        "w-full py-20 lg:py-28 bg-creme scroll-mt-24",
+        className
+      )}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
-        <header className="flex flex-col gap-4 max-w-[760px] mb-12 lg:mb-16">
+        {/* Header */}
+        <header className="flex flex-col gap-4 max-w-[760px] mb-14 lg:mb-20">
           <Kicker color="cobre">{kicker}</Kicker>
           <Heading as="h2" id={`${sectionId}-heading`}>
             {headline}
           </Heading>
-          <div className="w-12 h-0.5 bg-cobre" aria-hidden />
+          <span aria-hidden className="block w-12 h-0.5 bg-cobre" />
           {intro && (
             <BodyText color="muted" size="base">
               {intro}
@@ -50,46 +54,76 @@ export function ServiceJourneyBlock({
           )}
         </header>
 
-        <ol className="relative flex flex-col gap-6 lg:gap-8 max-w-[860px]" role="list">
-          {steps.map((step, i) => (
-            <li
-              key={`${step.number}-${i}`}
-              className="relative flex gap-5 lg:gap-6"
-            >
-              {/* Linha conectora vertical */}
-              {i < steps.length - 1 && (
-                <span
-                  aria-hidden
-                  className="absolute left-6 lg:left-7 top-14 lg:top-16 bottom-[-1.5rem] lg:bottom-[-2rem] w-px bg-ouro/30"
-                />
-              )}
+        {/* Timeline */}
+        <ol className="flex flex-col max-w-[860px]" role="list">
+          {steps.map((step, i) => {
+            const isLast = i === steps.length - 1
+            const stepNum = step.number.padStart(2, "0")
 
-              {/* Bolha numerada */}
-              <div className="flex-shrink-0">
-                <span
+            return (
+              <li
+                key={`${step.number}-${i}`}
+                className={cn(
+                  "grid grid-cols-[auto_1fr] gap-x-5 lg:gap-x-7",
+                  !isLast && "pb-6 lg:pb-8"
+                )}
+              >
+                {/* Coluna esquerda — bullet + linha conectora */}
+                <div className="relative flex flex-col items-center">
+                  <span
+                    className={cn(
+                      "z-10 flex flex-shrink-0 items-center justify-center",
+                      "w-11 h-11 lg:w-12 lg:h-12 rounded-full",
+                      "bg-creme ring-1 ring-cobre/60",
+                      "shadow-[0_0_0_4px_rgba(252,249,246,1)]"
+                    )}
+                  >
+                    <span className="text-[11px] lg:text-xs font-extrabold tracking-[0.18em] text-cobre">
+                      {stepNum}
+                    </span>
+                  </span>
+                  {!isLast && (
+                    <span
+                      aria-hidden
+                      className="flex-1 w-px my-2 bg-gradient-to-b from-cobre/40 via-cobre/20 to-cobre/10"
+                    />
+                  )}
+                </div>
+
+                {/* Coluna direita — cartão */}
+                <article
                   className={cn(
-                    "flex items-center justify-center",
-                    "w-12 h-12 lg:w-14 lg:h-14 rounded-full",
-                    "bg-ouro text-charcoal",
-                    "text-lg lg:text-xl font-extrabold",
-                    "shadow-sm"
+                    "group bg-white rounded-2xl",
+                    "ring-1 ring-cobre/10",
+                    "px-6 py-6 lg:px-9 lg:py-8",
+                    "shadow-[0_1px_2px_rgba(46,46,46,0.04)]",
+                    "hover:ring-cobre/25 hover:shadow-[0_10px_30px_-12px_rgba(192,138,99,0.25)]",
+                    "transition-all duration-300"
                   )}
                 >
-                  {step.number}
-                </span>
-              </div>
-
-              {/* Conteúdo */}
-              <div className="flex flex-col gap-2 pt-2 flex-1">
-                <Heading as="h3" className="!text-lg lg:!text-xl">
-                  {step.title}
-                </Heading>
-                <BodyText color="muted" size="base">
-                  {step.description}
-                </BodyText>
-              </div>
-            </li>
-          ))}
+                  <Kicker
+                    color="cobre"
+                    className="!mb-2 !text-[11px] lg:!text-xs"
+                  >
+                    Etapa {step.number}
+                  </Kicker>
+                  <Heading
+                    as="h3"
+                    className="!text-lg lg:!text-xl !leading-snug !text-charcoal"
+                  >
+                    {step.title}
+                  </Heading>
+                  <span
+                    aria-hidden
+                    className="block w-10 h-px bg-ouro/70 mt-4 mb-5 transition-all duration-300 group-hover:w-16 group-hover:bg-ouro"
+                  />
+                  <BodyText color="muted" size="base">
+                    {step.description}
+                  </BodyText>
+                </article>
+              </li>
+            )
+          })}
         </ol>
       </div>
     </section>

@@ -12,6 +12,7 @@ import {
   getAllServiceSlugs,
   getServiceDataBySlug,
 } from "@/lib/structure-service-data"
+import { SITE_METADATA } from "@/lib/constants"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -30,24 +31,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!service) {
     return {
-      title: "Serviço não encontrado | Hospital São Rafael",
+      title: "Serviço não encontrado",
     }
   }
+
+  const canonical = `${SITE_METADATA.url}/servicos/${slug}`
+  const ogImage = service.hero.backgroundImage.startsWith("http")
+    ? service.hero.backgroundImage
+    : `${SITE_METADATA.url}${service.hero.backgroundImage}`
 
   return {
     title: service.meta.title,
     description: service.meta.description,
+    alternates: { canonical },
     openGraph: {
       title: service.meta.title,
       description: service.meta.description,
+      url: canonical,
+      type: "article",
       images: [
         {
-          url: service.hero.backgroundImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: service.hero.headline,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: service.meta.title,
+      description: service.meta.description,
+      images: [ogImage],
     },
   }
 }
