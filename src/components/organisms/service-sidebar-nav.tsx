@@ -9,6 +9,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { BaseComponentProps } from "@/types"
 import type { ServiceNavSection } from "@/lib/services-content"
@@ -18,12 +19,18 @@ import type { ServiceNavSection } from "@/lib/services-content"
 // -----------------------------------------------------------------------------
 interface ServiceSidebarNavProps extends BaseComponentProps {
   sections: ServiceNavSection[]
+  /** WhatsApp do CTA fixo no rodapé do TOC */
+  whatsappHref?: string
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServiceSidebarNav({ sections, className }: ServiceSidebarNavProps) {
+export function ServiceSidebarNav({
+  sections,
+  whatsappHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
+  className,
+}: ServiceSidebarNavProps) {
   const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "")
   const [visible, setVisible] = useState(false)
 
@@ -70,10 +77,10 @@ export function ServiceSidebarNav({ sections, className }: ServiceSidebarNavProp
       aria-label="Navegação nesta página"
       className={cn(
         "hidden xl:flex fixed right-6 2xl:right-10 top-1/2 -translate-y-1/2 z-[15]",
-        "flex-col gap-1",
-        "max-h-[75vh] overflow-y-auto",
+        "flex-col",
+        "max-h-[80vh]",
         "bg-white/95 backdrop-blur-sm border border-charcoal/10",
-        "rounded-xl shadow-lg p-4 w-[220px]",
+        "rounded-xl shadow-lg w-[220px]",
         "transition-all duration-500",
         visible
           ? "opacity-100 translate-x-0"
@@ -81,34 +88,57 @@ export function ServiceSidebarNav({ sections, className }: ServiceSidebarNavProp
         className
       )}
     >
-      <span className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/40 mb-2">
-        Nesta página
-      </span>
-      <nav>
-        <ul className="flex flex-col gap-0.5 border-l border-charcoal/10">
-          {sections.map((s) => {
-            const isActive = activeId === s.id
-            return (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  className={cn(
-                    "block pl-3 pr-2 py-1.5 -ml-px border-l-2 text-sm transition-all",
-                    "hover:text-charcoal",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-r",
-                    isActive
-                      ? "border-ouro text-charcoal font-semibold"
-                      : "border-transparent text-charcoal/50"
-                  )}
-                  aria-current={isActive ? "location" : undefined}
-                >
-                  {s.label}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
+      {/* Lista scroll-spy */}
+      <div className="flex-1 min-h-0 overflow-y-auto p-4 pb-3">
+        <span className="text-[10px] font-extrabold uppercase tracking-kicker text-charcoal/40 mb-2 block">
+          Nesta página
+        </span>
+        <nav>
+          <ul className="flex flex-col gap-0.5 border-l border-charcoal/10">
+            {sections.map((s) => {
+              const isActive = activeId === s.id
+              return (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    className={cn(
+                      "block pl-3 pr-2 py-1.5 -ml-px border-l-2 text-sm transition-all",
+                      "hover:text-charcoal",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-r",
+                      isActive
+                        ? "border-ouro text-charcoal font-semibold"
+                        : "border-transparent text-charcoal/50"
+                    )}
+                    aria-current={isActive ? "location" : undefined}
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      </div>
+
+      {/* CTA fixo no rodapé do TOC */}
+      <div className="border-t border-charcoal/10 p-3">
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "w-full inline-flex items-center justify-center gap-1.5",
+            "rounded-full px-3 py-2.5",
+            "bg-ouro text-white font-bold text-xs",
+            "hover:bg-ouro-hover transition-colors",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
+          )}
+          aria-label="Falar no WhatsApp"
+        >
+          <MessageCircle size={14} aria-hidden />
+          <span>Falar no WhatsApp</span>
+        </a>
+      </div>
     </aside>
   )
 }

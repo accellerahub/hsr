@@ -95,11 +95,12 @@ export function ServiceInlineCta({
 
           <p
             className={cn(
-              "text-xs mt-2",
-              isDark ? "text-white/50" : "text-charcoal/50"
+              "text-xs mt-2 leading-relaxed",
+              isDark ? "text-white/55" : "text-charcoal/55"
             )}
           >
-            Atendimento exclusivamente particular.
+            Avaliação inicial sem compromisso · Resposta em até 1 hora útil ·
+            Atendimento exclusivamente particular
           </p>
         </div>
       </div>

@@ -36,6 +36,9 @@ import { ServiceProtocolsBlock } from "@/components/organisms/service-protocols-
 import { ServiceJourneyBlock } from "@/components/organisms/service-journey-block"
 import { ServiceRelatedBlock } from "@/components/organisms/service-related-block"
 import { ServiceInlineCta } from "@/components/organisms/service-inline-cta"
+import { ServiceMedicoBlock } from "@/components/organisms/service-medico-block"
+import { ServiceAcompanhanteBlock } from "@/components/organisms/service-acompanhante-block"
+import { ServiceReferencesBlock } from "@/components/organisms/service-references-block"
 import { ServiceStickyCta } from "@/components/molecules/service-sticky-cta"
 import { ServiceSchema } from "@/components/atoms/service-schema"
 
@@ -67,15 +70,22 @@ export function ServiceDetailTemplate({
     hero,
     intro,
     indications,
+    medico,
     galleryBlock,
     equipment,
     highlights,
     protocols,
     journey,
+    acompanhante,
     testimonials,
     faq,
     related,
+    references,
+    lastReviewed,
   } = data
+
+  // schemaType vindo do dado tem prioridade sobre o default da prop
+  const resolvedSchemaType = data.schemaType ?? schemaType
 
   // Label curto p/ 3º nível do breadcrumb (evita wrap em mobile e cobertura do H1).
   // Prioridade: kicker (title-case) → slug formatado.
@@ -102,7 +112,8 @@ export function ServiceDetailTemplate({
       <ServiceSchema
         data={data}
         canonicalUrl={canonicalUrl}
-        schemaType={schemaType}
+        schemaType={resolvedSchemaType}
+        lastReviewed={lastReviewed}
       />
 
       {/* TOC flutuante (desktop XL+) */}
@@ -127,6 +138,11 @@ export function ServiceDetailTemplate({
             variant="creme"
           />
         </>
+      )}
+
+      {/* 2b. Bloco híbrido p/ médico assistente (opcional) */}
+      {medico && (
+        <ServiceMedicoBlock data={medico} sectionId="para-o-medico" />
       )}
 
       {/* 3. Gallery + features (infraestrutura HSR) */}
@@ -162,6 +178,14 @@ export function ServiceDetailTemplate({
         </>
       )}
 
+      {/* 7b. Bloco acompanhante/família (opcional) */}
+      {acompanhante && (
+        <ServiceAcompanhanteBlock
+          data={acompanhante}
+          sectionId="acompanhante"
+        />
+      )}
+
       {/* 8. Testimonials */}
       <div id="depoimentos" className="scroll-mt-24">
         <TestimonialsCarousel data={testimonials} reserveRightGutter />
@@ -182,6 +206,14 @@ export function ServiceDetailTemplate({
 
       {/* 10. Conteúdo relacionado */}
       {related && <ServiceRelatedBlock data={related} sectionId="relacionados" />}
+
+      {/* 11. Referências e revisão clínica (E-E-A-T) */}
+      {(references || lastReviewed) && (
+        <ServiceReferencesBlock
+          references={references}
+          lastReviewed={lastReviewed}
+        />
+      )}
 
       {/* Footer */}
       <Footer data={FOOTER_DATA as unknown as FooterData} />

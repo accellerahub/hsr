@@ -16,27 +16,43 @@ A página deve, ao contrário, deixar claro o modelo particular como **escolha d
 
 ---
 
+## 1b. Personas
+
+Toda página de serviço deve declarar a persona **primária** e, opcionalmente, a(s) **secundária(s)**. O template Sales B2C suporta blocos híbridos para endereçar persona secundária sem tirar protagonismo do paciente.
+
+| Persona | Quem é | Como aparece no site |
+|---|---|---|
+| **Paciente** | Decisor formal do tratamento | Hero, Indicações, Jornada, FAQ, CTAs WhatsApp |
+| **Médico assistente / parceiro** | Encaminha, opera, decide co-pago. Em Cirúrgico/IMD/Lab, pode ser decisor primário | `ServiceMedicoBlock` mid-page (não rodapé) |
+| **Acompanhante / família** | Decisor sombra, voz pública (review). Critical em Internação/Alimentação/Transição | `ServiceAcompanhanteBlock` mid-page |
+
+**Regra:** persona secundária nunca substitui CTA principal (WhatsApp paciente). Bloco híbrido pode ter CTA secundário próprio (mesmo WhatsApp ou canal comercial dedicado).
+
+---
+
 ## 2. Estrutura de blocos (ordem fixa)
 
 ```
-0.  ServiceSchema (JSON-LD)              — head
-1.  Breadcrumb                            — overlay no hero (3º item: label CURTO, ex: kicker)
-2.  ServicePageHero                       — H1, subhead, pills, CTA único
-3.  ServiceIntroBlock                     — long-form "O que é"  (opcional, recomendado p/ SEO)
-4.  ServiceIndicationsBlock               — grid "Para quem é indicado"
-4a. ServiceInlineCta (variant="creme")    — CTA repetido nº 1
-5.  ServiceGalleryBlock                   — infraestrutura, 3 imagens DIFERENTES + features
-6.  ServiceEquipmentBlock                 — equipamentos / tecnologia
-7.  ServiceHighlights                     — métricas/números
-8.  ServiceProtocolsBlock                 — protocolos + certificações (com badges visuais)
-9.  ServiceJourneyBlock                   — jornada do paciente em passos
-9a. ServiceInlineCta (variant="charcoal") — CTA repetido nº 2
-10. TestimonialsCarousel                  — depoimentos reais (autorizados)
-11. FAQSection                            — 8-12 perguntas
-11a.ServiceInlineCta (variant="creme")    — CTA repetido nº 3 (última captura)
-12. ServiceRelatedBlock                   — cross-link a outros serviços (opcional)
+0.  ServiceSchema (JSON-LD)               — head
+1.  Breadcrumb                             — overlay no hero (3º item: label CURTO)
+2.  ServicePageHero                        — H1, subhead, pills, CTA único
+3.  ServiceIntroBlock                      — long-form "O que é"  (opcional, recomendado p/ SEO)
+4.  ServiceIndicationsBlock                — grid "Para quem é indicado"
+4a. ServiceInlineCta (variant="creme")     — CTA repetido nº 1
+4b. ServiceMedicoBlock                     — híbrido p/ médico assistente (opcional)
+5.  ServiceGalleryBlock                    — infraestrutura, 3 imagens DIFERENTES + features
+6.  ServiceEquipmentBlock                  — equipamentos / tecnologia
+7.  ServiceHighlights                      — métricas/números
+8.  ServiceProtocolsBlock                  — protocolos + certificações (com badges visuais)
+9.  ServiceJourneyBlock                    — jornada do paciente em passos
+9a. ServiceInlineCta (variant="charcoal")  — CTA repetido nº 2
+9b. ServiceAcompanhanteBlock               — p/ acompanhante/família (opcional)
+10. TestimonialsCarousel                   — depoimentos reais (autorizados)
+11. FAQSection                             — 8-12 perguntas
+11a.ServiceInlineCta (variant="creme")     — CTA repetido nº 3 (última captura)
+12. ServiceRelatedBlock                    — cross-link a outros serviços (opcional)
 13. Footer
-14. ServiceStickyCta                      — barra fixa mobile (WhatsApp único)
+14. ServiceStickyCta                       — barra fixa mobile (WhatsApp único)
 ```
 
 Sidebar TOC (`ServiceSidebarNav`) flutua no desktop XL+ quando `navSections` é definido.
@@ -156,6 +172,47 @@ Não envie a página para a diretoria sem:
 
 ---
 
+## 9b. Mapeamento de personas por página
+
+Confirmado pós-revisão Renata (2026-04-28).
+
+| Página | Persona primária | Secundária(s) | Bloco médico | Bloco acompanhante |
+|---|---|---|:---:|:---:|
+| Centro Cirúrgico | Paciente | Médico (forte) + Acompanhante | ✅ forte | ✅ |
+| Unidade de Internação | Paciente | Acompanhante (forte) | — | ✅ forte |
+| IMD | Paciente | Médico assistente | ✅ | — |
+| Laboratório | Paciente | Médico assistente | ✅ | — |
+| Terapia Hiperbárica | Paciente | Médico (light) + Acompanhante (light) | ✅ light | ✅ light |
+| Centro de Convenções (B2B) | Corporativo | Participantes | — | — |
+| Praça de Alimentação | Paciente | **Acompanhante (forte)** | — | ✅ forte (voucher) |
+| Upgrade de Acomodação | Paciente | Acompanhante | — | ✅ |
+| Extensão de Diária | Paciente | Acompanhante | — | — |
+| Unidade de Transição | Paciente | Acompanhante | — | ✅ |
+| Consulta Pré-Anestésica | Paciente | Médico assistente | ✅ | — |
+| Técnico de Enfermagem Exclusivo | Paciente | Acompanhante | — | — |
+| Instrumentador Especializado (B2B) | Médico parceiro | — | — | — |
+
+Cards visuais não-clicáveis (sem página): Academia, Conforto Médico, Engenharia Clínica.
+
+---
+
+## 9c. Reforços E-E-A-T (medical YMYL)
+
+Aplicar em **todo template Sales B2C**. Sem isso, ranqueamento medical fica B+; com, sobe pra A.
+
+- [ ] **Bloco médico responsável** com schema `medicalAuthor` (Person) — foto, nome, RQE, título da sociedade, CRM
+- [ ] **"Última revisão clínica em [data]"** no rodapé do conteúdo + `dateModified` + `dateReviewed` no schema
+- [ ] **Bloco "Referências e fontes"** — 3-5 links externos (CFM, SBMH, ANVISA, PubMed) com `rel="noopener"`
+- [ ] **Schema `MedicalProcedure`** quando o serviço é tratamento (Hiperbárica, Cirúrgico, IMD exames). `MedicalClinic` só em páginas institucionais
+
+## 9d. Reforços de conversão
+
+- [ ] **Risk reversal**: microcopy "Avaliação inicial sem compromisso" abaixo de cada CTA
+- [ ] **SLA de resposta declarado**: "Equipe responde em até 1 hora útil no WhatsApp" abaixo do botão
+- [ ] **Microcomprometimento alternativo (v2)**: form curto opcional (nome+wpp+caso) p/ quem ainda não quer abrir WhatsApp
+
+---
+
 ## 10. Workflow de aprovação por página
 
 ```
@@ -171,4 +228,4 @@ Não envie a página para a diretoria sem:
 
 ---
 
-**Última atualização:** 2026-04-27 — pós-validação template hiperbárica.
+**Última atualização:** 2026-04-28 — pós-revisão Renata: personas (médico/acompanhante), blocos híbridos, reforços E-E-A-T + conversão, mapeamento por página.

@@ -178,7 +178,7 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
           {/* CTA — WhatsApp único */}
           <div
             className={cn(
-              "w-full sm:w-auto",
+              "flex flex-col gap-2 w-full sm:w-auto sm:self-start",
               "transition-all duration-700 delay-[400ms]",
               hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             )}
@@ -191,6 +191,9 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
             >
               Falar no WhatsApp
             </Button>
+            <p className="text-xs text-white/65 leading-snug max-w-[360px]">
+              Avaliação inicial sem compromisso · Resposta em até 1 hora útil
+            </p>
           </div>
 
         </div>

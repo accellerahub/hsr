@@ -17,6 +17,8 @@ interface ServiceSchemaProps {
   canonicalUrl: string
   /** Tipo schema principal: MedicalProcedure (tratamento) ou MedicalClinic (infra) */
   schemaType?: "MedicalProcedure" | "MedicalClinic"
+  /** ISO date (YYYY-MM-DD) — última revisão clínica do conteúdo */
+  lastReviewed?: string
 }
 
 // -----------------------------------------------------------------------------
@@ -125,6 +127,7 @@ export function ServiceSchema({
   data,
   canonicalUrl,
   schemaType = "MedicalClinic",
+  lastReviewed,
 }: ServiceSchemaProps) {
   const baseUrl = canonicalUrl.replace(/\/servicos\/.+$/, "")
 
@@ -147,6 +150,18 @@ export function ServiceSchema({
       url: baseUrl,
       name: "Hospital São Rafael",
     },
+    publisher: HSR_ORGANIZATION,
+  }
+
+  // E-E-A-T sinais YMYL
+  if (lastReviewed) {
+    wrapper.lastReviewed = lastReviewed
+    wrapper.dateModified = lastReviewed
+    wrapper.reviewedBy = {
+      "@type": "Organization",
+      name: "Equipe Médica do Hospital São Rafael",
+      url: baseUrl,
+    }
   }
 
   if (faq) {
