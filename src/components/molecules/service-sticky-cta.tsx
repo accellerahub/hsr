@@ -36,30 +36,35 @@ export function ServiceStickyCta({
       aria-label="Atendimento rápido"
       className={cn(
         "lg:hidden",
-        "fixed bottom-0 left-0 right-0 z-40",
-        "bg-white/95 backdrop-blur-md",
-        "border-t border-cobre/20",
-        "shadow-[0_-4px_20px_rgba(0,0,0,0.06)]",
-        "transition-transform duration-300",
-        visible ? "translate-y-0" : "translate-y-full"
+        // Floating pill — afastado das bordas laterais e do fim da tela.
+        // safe-area-inset-bottom evita sobreposição em dispositivos com home indicator.
+        "fixed left-4 right-4 z-40",
+        "transition-all duration-300",
+        visible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-6 pointer-events-none"
       )}
+      style={{
+        bottom: "max(1rem, env(safe-area-inset-bottom))",
+      }}
     >
-      <div className="p-3">
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "w-full inline-flex items-center justify-center gap-2",
-            "rounded-full px-4 py-3",
-            "bg-ouro text-white font-bold text-sm",
-            "hover:bg-ouro-hover transition-colors"
-          )}
-        >
-          <MessageCircle size={18} aria-hidden />
-          <span>Falar no WhatsApp</span>
-        </a>
-      </div>
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "w-full inline-flex items-center justify-center gap-2",
+          "rounded-full px-5 py-3.5",
+          "bg-ouro text-white font-bold text-sm",
+          "shadow-[0_10px_30px_-8px_rgba(155,108,74,0.45)]",
+          "ring-1 ring-white/20",
+          "hover:bg-ouro-hover transition-colors",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
+        )}
+      >
+        <MessageCircle size={18} aria-hidden />
+        <span>Falar no WhatsApp</span>
+      </a>
     </div>
   )
 }
