@@ -32,6 +32,7 @@ export function ServiceMedicoBlock({
     headline,
     description,
     benefits,
+    documentation,
     ctaLabel = "Falar com a Consultoria Médica",
     ctaHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
     note,
@@ -125,6 +126,29 @@ export function ServiceMedicoBlock({
             ))}
           </ul>
         </div>
+
+        {/* Documentação opcional (ex: credenciamento médico) */}
+        {documentation && (
+          <div className="mt-12 lg:mt-16 max-w-[860px] rounded-2xl bg-white/5 ring-1 ring-white/10 px-6 py-6 lg:px-8 lg:py-8">
+            <Kicker color="ouro" className="!text-[11px] lg:!text-xs !mb-3">
+              {documentation.title}
+            </Kicker>
+            <ul
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-white/75"
+              role="list"
+            >
+              {documentation.items.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1 w-1 rounded-full bg-ouro flex-shrink-0"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   )
