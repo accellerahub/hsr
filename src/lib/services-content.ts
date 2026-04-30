@@ -1237,7 +1237,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
         icon: "utensils",
         title: "Voucher de alimentação para o acompanhante",
         description:
-          "Cada paciente internado recebe automaticamente 1 voucher por internação, válido por todo o período. O voucher dá direito a 1 refeição completa, 1 sobremesa e 1 açaí na Praça de Alimentação do complexo.",
+          "Cada paciente internado recebe automaticamente 1 voucher por internação, válido por todo o período. O voucher dá direito a 1 refeição completa, 1 sobremesa (bombom ou brigadeiro) e 1 açaí na Praça de Alimentação do complexo.",
       },
       {
         icon: "bed",
@@ -1328,7 +1328,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
         id: "cc-faq-7",
         question: "Existe estrutura para o meu acompanhante?",
         answer:
-          "Sim. Quartos individuais com poltrona reclinável e banheiro privativo, sala de espera durante a cirurgia, Wi-Fi e Praça de Alimentação no complexo. Cada paciente internado recebe automaticamente 1 voucher por internação para o acompanhante, com direito a 1 refeição, 1 sobremesa e 1 açaí.",
+          "Sim. Quartos individuais com poltrona reclinável e banheiro privativo, sala de espera durante a cirurgia, Wi-Fi e Praça de Alimentação no complexo. Cada paciente internado recebe automaticamente 1 voucher por internação para o acompanhante, com direito a 1 refeição, 1 sobremesa (bombom ou brigadeiro) e 1 açaí.",
       },
       {
         id: "cc-faq-8",
@@ -2096,7 +2096,7 @@ const INTERNACAO: ServiceDetailData = {
         icon: "utensils",
         title: "Voucher de alimentação para o acompanhante",
         description:
-          "Cada paciente internado recebe automaticamente 1 voucher por internação para o acompanhante. O voucher dá direito a 1 refeição completa, 1 sobremesa e 1 açaí na Praça de Alimentação do complexo. As refeições do paciente já estão incluídas.",
+          "Cada paciente internado recebe automaticamente 1 voucher por internação para o acompanhante. O voucher dá direito a 1 refeição completa, 1 sobremesa (bombom ou brigadeiro) e 1 açaí na Praça de Alimentação do complexo. As refeições do paciente já estão incluídas.",
       },
       {
         icon: "headset",
@@ -2180,7 +2180,7 @@ const INTERNACAO: ServiceDetailData = {
         id: "int-faq-5",
         question: "Como funciona a alimentação durante a internação?",
         answer:
-          "As refeições do paciente são incluídas e adaptadas pela equipe de nutrição clínica conforme as necessidades pós-cirúrgicas. Para o acompanhante, cada internação dá direito automaticamente a 1 voucher (1 voucher por internação, independente do tempo de permanência), com 1 refeição, 1 sobremesa e 1 açaí na Praça de Alimentação do complexo.",
+          "As refeições do paciente são incluídas e adaptadas pela equipe de nutrição clínica conforme as necessidades pós-cirúrgicas. Para o acompanhante, cada internação dá direito automaticamente a 1 voucher (1 voucher por internação, independente do tempo de permanência), com 1 refeição, 1 sobremesa (bombom ou brigadeiro) e 1 açaí na Praça de Alimentação do complexo.",
       },
       {
         id: "int-faq-6",
